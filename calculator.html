@@ -427,23 +427,45 @@
     }
 
     function calculateAllRows() {
-      let grand = 0;
       document.querySelectorAll("tbody tr").forEach((row, index) => {
+        if (!rowHasInput(row)) {
+          clearRowOutputs(row);
+          return;
+        }
+        row.dataset.calculated = "true";
         enforceMinimumStart(row, index);
         calculateRow(row);
+      });
+      updateCumulativeGrades();
+    }
+
+    function updateCumulativeGrades() {
+      let grand = 0;
+      document.querySelectorAll("tbody tr").forEach(row => {
+        if (row.dataset.calculated !== "true") return;
         grand += Number(row.dataset.total || 0);
         applyGrade(row, grand);
       });
       grandTotalEl.textContent = format(grand);
     }
 
-    function updateCumulativeGrades() {
-      let grand = 0;
-      document.querySelectorAll("tbody tr").forEach(row => {
-        grand += Number(row.dataset.total || 0);
-        applyGrade(row, grand);
+    function rowHasInput(row) {
+      return ["count", "start", "end", "add", "subtract"].some(name => {
+        const input = row.querySelector(`[data-field="${name}"]`);
+        return input && String(input.value).trim() !== "";
       });
-      grandTotalEl.textContent = format(grand);
+    }
+
+    function clearRowOutputs(row) {
+      row.dataset.calculated = "false";
+      row.dataset.total = "0";
+      row.dataset.cumulative = "0";
+      row.querySelector('[data-output="one"]').textContent = "0";
+      row.querySelector('[data-output="total"]').textContent = "0";
+      const gradeEl = row.querySelector('[data-output="grade"]');
+      gradeEl.textContent = "0";
+      gradeEl.className = "readonly";
+      row.querySelector('[data-output="next"]').textContent = "0";
     }
 
     function enforceMinimumStart(row, index) {
@@ -493,19 +515,34 @@
       document.querySelectorAll("input").forEach(input => {
         input.value = "";
       });
-      calculateAllRows();
+      document.querySelectorAll("tbody tr").forEach(clearRowOutputs);
+      grandTotalEl.textContent = "0";
     }
 
     buildRows();
     buildExpTable();
-    calculateAllRows();
+    document.querySelectorAll("tbody tr").forEach(clearRowOutputs);
 
     rowsEl.addEventListener("click", event => {
       if (!event.target.matches(".line-calc")) return;
       const row = event.target.closest("tr");
       const index = Array.from(rowsEl.querySelectorAll("tr")).indexOf(row);
+      if (!rowHasInput(row)) {
+        clearRowOutputs(row);
+        updateCumulativeGrades();
+        return;
+      }
+      row.dataset.calculated = "true";
       enforceMinimumStart(row, index);
       calculateRow(row);
+      updateCumulativeGrades();
+    });
+
+    rowsEl.addEventListener("input", event => {
+      const row = event.target.closest("tr");
+      if (!row) return;
+      row.dataset.calculated = "false";
+      clearRowOutputs(row);
       updateCumulativeGrades();
     });
     document.getElementById("calculateAll").addEventListener("click", calculateAllRows);
