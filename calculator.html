@@ -182,7 +182,7 @@
       background: var(--field);
       color: var(--text);
       padding: 4px 8px;
-      text-align: right;
+      text-align: center;
       font: inherit;
       font-variant-numeric: tabular-nums;
     }
@@ -315,7 +315,7 @@
       <table aria-label="렙제 계산기">
         <thead>
           <tr>
-            <th>줄</th>
+            
             <th>유닛수</th>
             <th>시작 레벨</th>
             <th>끝나는 레벨</th>
@@ -343,7 +343,7 @@
 
   <script>
     const MAX_LEVEL = 112;
-    const rowLetters = "ABCDEFGHIJK".split("");
+    const rowLetters = Array(11).fill("");
     const rowsEl = document.getElementById("rows");
     const expTableEl = document.getElementById("expTable");
     const grandTotalEl = document.getElementById("grandTotal");
@@ -409,6 +409,7 @@
 
       row.querySelector('[data-output="one"]').textContent = format(one);
       row.querySelector('[data-output="total"]').textContent = format(total);
+      row.dataset.lineTotal = String(total);
       const gradeEl = row.querySelector('[data-output="grade"]');
       gradeEl.textContent = grade.label;
       gradeEl.className = `readonly ${grade.over ? "over" : grade.capped ? "ok" : ""}`;
@@ -422,7 +423,6 @@
       const gradeEl = row.querySelector('[data-output="grade"]');
       gradeEl.textContent = grade.label;
       gradeEl.className = `readonly ${grade.over ? "over" : grade.capped ? "ok" : ""}`;
-      row.querySelector('[data-output="total"]').textContent = format(cumulativeTotal);
       row.querySelector('[data-output="next"]').textContent = grade.capped || grade.over ? "-" : format(grade.next);
       row.dataset.cumulative = String(cumulativeTotal);
     }
@@ -444,7 +444,13 @@
       let grand = 0;
       document.querySelectorAll("tbody tr").forEach(row => {
         if (row.dataset.calculated !== "true") return;
-        grand += Number(row.dataset.total || 0);
+
+        const lineTotal = Number(row.dataset.lineTotal || row.dataset.total || 0);
+        grand += lineTotal;
+
+        row.dataset.total = String(grand);
+        row.querySelector('[data-output="total"]').textContent = format(grand);
+
         applyGrade(row, grand);
       });
       grandTotalEl.textContent = format(grand);
@@ -460,6 +466,7 @@
     function clearRowOutputs(row) {
       row.dataset.calculated = "false";
       row.dataset.total = "0";
+      row.dataset.lineTotal = "0";
       row.dataset.cumulative = "0";
       row.querySelector('[data-output="one"]').textContent = "0";
       row.querySelector('[data-output="total"]').textContent = "0";
@@ -490,8 +497,7 @@
     function buildRows() {
       rowsEl.innerHTML = rowLetters.map(letter => `
         <tr>
-          <td class="row-name">${letter}</td>
-          <td>${makeInput("count")}</td>
+          <td>${makeInput("count", "1")}</td>
           <td>${makeInput("start")}</td>
           <td>${makeInput("end")}</td>
           <td class="readonly" data-output="one">0</td>
