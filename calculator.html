@@ -334,7 +334,7 @@
 
     <div class="grid">
       <section>
-        <h2>커멘더 레벨 경험치 테이블</h2>
+        <h2>커멘더 레벨별 필요 경험치</h2>
         <div class="exp-grid" id="expTable"></div>
       </section>
 
@@ -422,6 +422,7 @@
       const gradeEl = row.querySelector('[data-output="grade"]');
       gradeEl.textContent = grade.label;
       gradeEl.className = `readonly ${grade.over ? "over" : grade.capped ? "ok" : ""}`;
+      row.querySelector('[data-output="total"]').textContent = format(cumulativeTotal);
       row.querySelector('[data-output="next"]').textContent = grade.capped || grade.over ? "-" : format(grade.next);
       row.dataset.cumulative = String(cumulativeTotal);
     }
