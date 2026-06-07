@@ -213,6 +213,7 @@
     const lands = Array.from(document.querySelectorAll(".land"));
     const remains = Array.from(document.querySelectorAll(".remain"));
     const dates = Array.from(document.querySelectorAll(".date"));
+    let clockTimer = null;
 
     function pad(value) {
       return String(value).padStart(2, "0");
@@ -305,6 +306,11 @@
       calculate();
     }
 
+    function startClock() {
+      if (clockTimer) clearInterval(clockTimer);
+      clockTimer = setInterval(setNow, 1000);
+    }
+
     document.getElementById("nowButton").addEventListener("click", setNow);
     timeInput.addEventListener("input", () => {
       calculate();
@@ -321,6 +327,7 @@
     });
 
     setNow();
+    startClock();
   </script>
 </body>
 </html>
