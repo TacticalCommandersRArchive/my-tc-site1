@@ -213,6 +213,7 @@
     const lands = Array.from(document.querySelectorAll(".land"));
     const remains = Array.from(document.querySelectorAll(".remain"));
     const dates = Array.from(document.querySelectorAll(".date"));
+    let targetDates = [];
     let clockTimer = null;
 
     function pad(value) {
@@ -227,9 +228,10 @@
       return `${pad(date.getFullYear() % 100)}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}`;
     }
 
-    function formatDuration(minutes) {
-      const days = Math.floor(minutes / 1440);
-      const rest = minutes % 1440;
+    function formatDurationSeconds(totalSeconds) {
+      const totalMinutes = Math.max(0, Math.ceil(totalSeconds / 60));
+      const days = Math.floor(totalMinutes / 1440);
+      const rest = totalMinutes % 1440;
       const hours = Math.floor(rest / 60);
       const mins = rest % 60;
       return `${days}일${pad(hours)}:${pad(mins)}`;
@@ -245,8 +247,7 @@
       return Math.trunc((SECONDS_PER_TICK - 1 - Math.trunc(rawSeconds)) / SECONDS_PER_TICK);
     }
 
-    function calculate() {
-      const baseDate = timeInput.value ? new Date(timeInput.value) : new Date();
+    function calculateTargetSeconds() {
       const currentPowers = powers.map((input) => {
         return Math.max(0, Math.floor(numberFrom(input)));
       });
@@ -257,13 +258,7 @@
       const finished = [false, false, false, false];
 
       if (landValues.some((land) => land <= 0)) {
-        remains.forEach((remain) => {
-          remain.textContent = "계산불가";
-        });
-        dates.forEach((date) => {
-          date.textContent = "-";
-        });
-        return;
+        return null;
       }
 
       for (let step = 0; step < powers.length; step += 1) {
@@ -293,22 +288,54 @@
         }
       }
 
-      resultTicks.forEach((ticks, index) => {
-        const minutes = ticks * 10;
-        const expected = new Date(baseDate.getTime() + minutes * 60 * 1000);
-        remains[index].textContent = formatDuration(minutes);
-        dates[index].textContent = formatDate(expected);
+      return resultTicks.map((ticks) => ticks * SECONDS_PER_TICK);
+    }
+
+    function renderResults(now) {
+      if (!targetDates.length) return;
+
+      targetDates.forEach((targetDate, index) => {
+        const remainingSeconds = Math.ceil((targetDate.getTime() - now.getTime()) / 1000);
+        remains[index].textContent = formatDurationSeconds(remainingSeconds);
+        dates[index].textContent = formatDate(targetDate);
       });
     }
 
+    function calculate(baseDate = (timeInput.value ? new Date(timeInput.value) : new Date())) {
+      const targetSeconds = calculateTargetSeconds();
+
+      if (!targetSeconds) {
+        targetDates = [];
+        remains.forEach((remain) => {
+          remain.textContent = "계산불가";
+        });
+        dates.forEach((date) => {
+          date.textContent = "-";
+        });
+        return;
+      }
+
+      targetDates = targetSeconds.map((seconds) => {
+        return new Date(baseDate.getTime() + seconds * 1000);
+      });
+      renderResults(baseDate);
+    }
+
     function setNow() {
-      timeInput.value = toLocalInputValue(new Date());
-      calculate();
+      const now = new Date();
+      timeInput.value = toLocalInputValue(now);
+      calculate(now);
+    }
+
+    function tickClock() {
+      const now = new Date();
+      timeInput.value = toLocalInputValue(now);
+      renderResults(now);
     }
 
     function startClock() {
       if (clockTimer) clearInterval(clockTimer);
-      clockTimer = setInterval(setNow, 1000);
+      clockTimer = setInterval(tickClock, 1000);
     }
 
     document.getElementById("nowButton").addEventListener("click", setNow);
