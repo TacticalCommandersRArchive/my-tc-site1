@@ -6,6 +6,7 @@
   <title>국가력 계산기</title>
   <style>
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       min-height: 100vh;
@@ -15,22 +16,26 @@
       color: #efe7c7;
       font-family: "Malgun Gothic", system-ui, sans-serif;
     }
+
     main {
       width: min(820px, calc(100vw - 24px));
       margin: 0 auto;
       padding: 18px 0 28px;
     }
+
     .panel {
-      border: 1px solid rgba(178,166,105,.34);
+      border: 1px solid rgba(178, 166, 105, .34);
       background: #171911;
       padding: 14px;
     }
+
     h1 {
       margin: 0 0 12px;
       color: #d6b34c;
       font-size: 22px;
       letter-spacing: 0;
     }
+
     .time-row {
       display: grid;
       grid-template-columns: 96px 1fr auto;
@@ -38,15 +43,18 @@
       align-items: center;
       margin-bottom: 12px;
     }
-    label, .row-label {
+
+    label,
+    .row-label {
       color: #d6b34c;
       font-weight: 800;
       text-align: center;
     }
+
     input {
       width: 100%;
       height: 34px;
-      border: 1px solid rgba(214,179,76,.4);
+      border: 1px solid rgba(255,255,255,.32);
       background: #11130c;
       color: #efe7c7;
       padding: 4px 8px;
@@ -54,9 +62,12 @@
       text-align: right;
       font-variant-numeric: tabular-nums;
     }
+
     input[type="datetime-local"] {
       text-align: left;
+      border-color: rgba(214, 179, 76, .45);
     }
+
     button {
       min-height: 34px;
       border: 1px solid #62613d;
@@ -67,41 +78,73 @@
       font-weight: 700;
       cursor: pointer;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
       table-layout: fixed;
     }
-    th, td {
+
+    td {
       border: 1px solid rgba(178,166,105,.25);
       padding: 8px;
       text-align: center;
       vertical-align: middle;
-    }
-    th {
-      background: #45451f;
-      color: #fff4c0;
-      font-size: 14px;
-    }
-    td {
       background: #1d1f16;
     }
-    .target {
-      color: #d6b34c;
+
+    td:first-child {
+      width: 116px;
+      background: #202216;
+    }
+
+    .notice {
+      color: #fff4c0;
+      background: #35351f;
+      font-weight: 900;
+    }
+
+    .output {
       font-weight: 900;
       font-variant-numeric: tabular-nums;
     }
-    .output {
-      color: #fff5ca;
-      font-weight: 800;
-      font-variant-numeric: tabular-nums;
+
+    .c-yellow { --accent: #f0c400; --fill: rgba(240, 196, 0, .32); --text: #ffe66a; }
+    .c-red { --accent: #f04438; --fill: rgba(240, 68, 56, .30); --text: #ff9b92; }
+    .c-blue { --accent: #2878ff; --fill: rgba(40, 120, 255, .30); --text: #9fc3ff; }
+    .c-green { --accent: #66eee8; --fill: rgba(102, 238, 232, .34); --text: #bffffc; }
+
+    td.c-yellow,
+    td.c-red,
+    td.c-blue,
+    td.c-green {
+      background: var(--fill);
+      border-color: var(--accent);
     }
+
+    td.c-yellow input,
+    td.c-red input,
+    td.c-blue input,
+    td.c-green input {
+      border-color: var(--accent);
+      background: rgba(0, 0, 0, .28);
+      color: var(--text);
+    }
+
+    td.c-yellow.output,
+    td.c-red.output,
+    td.c-blue.output,
+    td.c-green.output {
+      color: var(--text);
+    }
+
     .muted {
       color: #bdb38d;
       font-size: 13px;
       margin-top: 10px;
       line-height: 1.5;
     }
+
     @media (max-width: 680px) {
       main { width: calc(100vw - 12px); padding-top: 8px; }
       .panel { padding: 8px; }
@@ -127,34 +170,34 @@
           <tbody>
             <tr>
               <td class="row-label">현재 국가력</td>
-              <td><input class="power" value="0" inputmode="numeric"></td>
-              <td><input class="power" value="0" inputmode="numeric"></td>
-              <td><input class="power" value="0" inputmode="numeric"></td>
-              <td><input class="power" value="0" inputmode="numeric"></td>
+              <td class="c-yellow"><input class="power" value="0" inputmode="numeric"></td>
+              <td class="c-red"><input class="power" value="0" inputmode="numeric"></td>
+              <td class="c-green"><input class="power" value="0" inputmode="numeric"></td>
+              <td class="c-blue"><input class="power" value="0" inputmode="numeric"></td>
             </tr>
             <tr>
               <td class="row-label">영토수</td>
-              <td><input class="land" value="16" inputmode="numeric"></td>
-              <td><input class="land" value="16" inputmode="numeric"></td>
-              <td><input class="land" value="16" inputmode="numeric"></td>
-              <td><input class="land" value="16" inputmode="numeric"></td>
+              <td class="c-yellow"><input class="land" value="16" inputmode="numeric"></td>
+              <td class="c-red"><input class="land" value="16" inputmode="numeric"></td>
+              <td class="c-green"><input class="land" value="16" inputmode="numeric"></td>
+              <td class="c-blue"><input class="land" value="16" inputmode="numeric"></td>
             </tr>
             <tr>
-              <td class="row-label" colspan="5">국가력 30000 까지의 예상 시간</td>
+              <td class="notice" colspan="5">국가력 30000 까지의 예상 시간</td>
             </tr>
             <tr>
               <td class="row-label">남은 시간</td>
-              <td class="output remain">0</td>
-              <td class="output remain">0</td>
-              <td class="output remain">0</td>
-              <td class="output remain">0</td>
+              <td class="output c-yellow remain">0</td>
+              <td class="output c-red remain">0</td>
+              <td class="output c-green remain">0</td>
+              <td class="output c-blue remain">0</td>
             </tr>
             <tr>
               <td class="row-label">예상 날짜</td>
-              <td class="output date">0</td>
-              <td class="output date">0</td>
-              <td class="output date">0</td>
-              <td class="output date">0</td>
+              <td class="output c-yellow date">0</td>
+              <td class="output c-red date">0</td>
+              <td class="output c-green date">0</td>
+              <td class="output c-blue date">0</td>
             </tr>
           </tbody>
         </table>
@@ -171,6 +214,8 @@
     const lands = Array.from(document.querySelectorAll(".land"));
     const remains = Array.from(document.querySelectorAll(".remain"));
     const dates = Array.from(document.querySelectorAll(".date"));
+    let liveClock = true;
+    let clockTimer = null;
 
     function pad(value) {
       return String(value).padStart(2, "0");
@@ -226,14 +271,28 @@
     }
 
     function setNow() {
+      liveClock = true;
       timeInput.value = toLocalInputValue(new Date());
       calculate();
     }
 
+    function startClock() {
+      if (clockTimer) clearInterval(clockTimer);
+      clockTimer = setInterval(() => {
+        if (!liveClock) return;
+        timeInput.value = toLocalInputValue(new Date());
+        calculate();
+      }, 1000);
+    }
+
     document.getElementById("nowButton").addEventListener("click", setNow);
-    timeInput.addEventListener("input", calculate);
+    timeInput.addEventListener("input", () => {
+      liveClock = false;
+      calculate();
+    });
     [...powers, ...lands].forEach(input => input.addEventListener("input", calculate));
     setNow();
+    startClock();
   </script>
 </body>
 </html>
