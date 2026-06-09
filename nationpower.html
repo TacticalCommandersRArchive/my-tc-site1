@@ -10,8 +10,10 @@
       margin: 0;
       min-height: 100vh;
       background:
-        linear-gradient(135deg, rgba(255,255,255,.03) 25%, transparent 25%) 0 0 / 18px 18px,
-        #11120d;
+        radial-gradient(circle at 12% 8%, rgba(0, 170, 255, .14), transparent 26rem),
+        radial-gradient(circle at 88% 12%, rgba(30, 191, 255, .10), transparent 24rem),
+        linear-gradient(135deg, rgba(255,255,255,.018) 25%, transparent 25%) 0 0 / 18px 18px,
+        #070b12;
       color: #efe7c7;
       font-family: "Malgun Gothic", system-ui, sans-serif;
     }
@@ -19,6 +21,17 @@
       width: min(820px, calc(100vw - 24px));
       margin: 0 auto;
       padding: 18px 0 28px;
+    }
+    .home-banner {
+      display: block;
+      width: min(100vw - 24px, 1200px);
+      max-width: none;
+      margin: 0 auto 16px;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 8px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, .45);
     }
     .panel {
       border: 1px solid rgba(178, 166, 105, .34);
@@ -150,6 +163,10 @@
 </head>
 <body>
   <main>
+    <a href="index.html" title="메인 화면으로 돌아가기">
+      <img class="home-banner" src="channels_banner_title.jpg" alt="Tactical Commanders R Community Archive">
+    </a>
+
     <section class="panel">
       <div class="title-row">
         <h1>국가력 계산기</h1>
