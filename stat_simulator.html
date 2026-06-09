@@ -10,7 +10,7 @@ body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(
 .shell{width:min(1200px,calc(100vw - 24px));margin:0 auto;padding-bottom:28px}
 .home-banner{display:block;width:100%;max-width:1200px;margin:0 auto 24px;border-radius:8px;box-shadow:0 10px 24px rgba(0,0,0,.45)}
 .sim-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start;max-width:760px;margin:0 auto}
-.panel{position:relative;min-height:261px;border:1px solid rgba(139,232,255,.55);background:linear-gradient(180deg,rgba(3,7,13,.95),rgba(1,3,5,.98));box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 14px 28px rgba(0,0,0,.45);padding:30px 12px 12px}
+.panel{position:relative;height:261px;border:1px solid rgba(139,232,255,.55);background:linear-gradient(180deg,rgba(3,7,13,.95),rgba(1,3,5,.98));box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 14px 28px rgba(0,0,0,.45);padding:30px 12px 12px}
 .panel-title{position:absolute;top:-12px;left:50%;transform:translateX(-50%);min-width:140px;padding:3px 18px;border:1px solid rgba(139,232,255,.65);background:#03070d;color:#f4fbff;text-align:center;font-weight:800;letter-spacing:2px;text-shadow:0 1px 2px #000,0 0 7px rgba(0,165,220,.55)}
 .info-list{display:grid;grid-template-rows:auto repeat(4,1fr);min-height:205px;padding:2px 8px}
 .info-head{display:grid;grid-template-columns:48px 72px 62px 32px 32px;gap:7px;justify-content:center;align-items:end;color:#dff8ff;font-size:14px;font-weight:800;letter-spacing:2px;text-align:center}
@@ -30,8 +30,8 @@ body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(
 .stat-value[readonly]{opacity:.95;cursor:default}
 .step{height:31px;border:1px solid rgba(139,232,255,.45);background:#07111b;color:#dff8ff;cursor:pointer;font-weight:900}
 .step:hover{border-color:#dff8ff;color:#fff}
-.hint{margin-top:12px;color:#8fb8c8;font-size:13px;line-height:1.45;text-align:right}
-@media(max-width:760px){.sim-grid{grid-template-columns:1fr}.panel{min-height:auto}.home-banner{margin-bottom:18px}}
+.hint{margin-top:6px;color:#8fb8c8;font-size:12px;line-height:1.25;text-align:right}
+@media(max-width:760px){.sim-grid{grid-template-columns:1fr}.panel{height:auto;min-height:auto}.home-banner{margin-bottom:18px}}
 </style>
 </head>
 <body>
@@ -44,10 +44,10 @@ body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(
       <div class="panel-title">병과정보</div>
       <div class="info-list">
         <div class="info-head"><div></div><div></div><div>레벨</div><div></div><div></div></div>
-        <div class="info-row"><img class="class-icon" src="infantry_anim.gif" alt=""><div class="label">보 병</div><input class="level-input" value="1" min="1" max="112" inputmode="numeric"><button class="step level-plus" type="button">▲</button><button class="step level-minus" type="button">▼</button></div>
-        <div class="info-row"><img class="class-icon" src="tank_anim.gif" alt=""><div class="label">전 차</div><input class="level-input" value="1" min="1" max="112" inputmode="numeric"><button class="step level-plus" type="button">▲</button><button class="step level-minus" type="button">▼</button></div>
-        <div class="info-row"><img class="class-icon" src="air_anim.gif" alt=""><div class="label">비 행</div><input class="level-input" value="1" min="1" max="112" inputmode="numeric"><button class="step level-plus" type="button">▲</button><button class="step level-minus" type="button">▼</button></div>
-        <div class="info-row"><img class="class-icon" src="special_anim.gif" alt=""><div class="label">특 수</div><input class="level-input" value="1" min="1" max="112" inputmode="numeric"><button class="step level-plus" type="button">▲</button><button class="step level-minus" type="button">▼</button></div>
+        <div class="info-row"><img class="class-icon" src="infantry_anim.gif" alt=""><div class="label">보 병</div><input class="level-input" value="1" min="1" max="112" maxlength="3" inputmode="numeric" autocomplete="off"><button class="step level-plus" type="button">▲</button><button class="step level-minus" type="button">▼</button></div>
+        <div class="info-row"><img class="class-icon" src="tank_anim.gif" alt=""><div class="label">전 차</div><input class="level-input" value="1" min="1" max="112" maxlength="3" inputmode="numeric" autocomplete="off"><button class="step level-plus" type="button">▲</button><button class="step level-minus" type="button">▼</button></div>
+        <div class="info-row"><img class="class-icon" src="air_anim.gif" alt=""><div class="label">비 행</div><input class="level-input" value="1" min="1" max="112" maxlength="3" inputmode="numeric" autocomplete="off"><button class="step level-plus" type="button">▲</button><button class="step level-minus" type="button">▼</button></div>
+        <div class="info-row"><img class="class-icon" src="special_anim.gif" alt=""><div class="label">특 수</div><input class="level-input" value="1" min="1" max="112" maxlength="3" inputmode="numeric" autocomplete="off"><button class="step level-plus" type="button">▲</button><button class="step level-minus" type="button">▼</button></div>
       </div>
     </section>
     <section class="panel">
@@ -57,10 +57,10 @@ body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(
         <input id="points" class="points" value="20" readonly>
       </div>
       <div class="stat-list">
-        <div class="stat-row" data-stat="power"><div class="stat-name">전 략</div><input class="stat-value" value="5" readonly><button class="step plus" type="button">▲</button><button class="step minus" type="button">▼</button></div>
-        <div class="stat-row" data-stat="politics"><div class="stat-name">정 치</div><input class="stat-value" value="5" readonly><button class="step plus" type="button">▲</button><button class="step minus" type="button">▼</button></div>
-        <div class="stat-row" data-stat="knowledge"><div class="stat-name">지 식</div><input class="stat-value" value="5" readonly><button class="step plus" type="button">▲</button><button class="step minus" type="button">▼</button></div>
-        <div class="stat-row" data-stat="tech"><div class="stat-name">기 술</div><input class="stat-value" value="5" readonly><button class="step plus" type="button">▲</button><button class="step minus" type="button">▼</button></div>
+        <div class="stat-row" data-stat="power"><div class="stat-name">전 략</div><input class="stat-value" value="5" maxlength="3" inputmode="numeric" autocomplete="off"><button class="step plus" type="button">▲</button><button class="step minus" type="button">▼</button></div>
+        <div class="stat-row" data-stat="politics"><div class="stat-name">정 치</div><input class="stat-value" value="5" maxlength="3" inputmode="numeric" autocomplete="off"><button class="step plus" type="button">▲</button><button class="step minus" type="button">▼</button></div>
+        <div class="stat-row" data-stat="knowledge"><div class="stat-name">지 식</div><input class="stat-value" value="5" maxlength="3" inputmode="numeric" autocomplete="off"><button class="step plus" type="button">▲</button><button class="step minus" type="button">▼</button></div>
+        <div class="stat-row" data-stat="tech"><div class="stat-name">기 술</div><input class="stat-value" value="5" maxlength="3" inputmode="numeric" autocomplete="off"><button class="step plus" type="button">▲</button><button class="step minus" type="button">▼</button></div>
       </div>
       <div class="hint">포인트를 입력한 뒤 ▲▼로 분배하세요.</div>
     </section>
@@ -71,15 +71,54 @@ const points = document.getElementById("points");
 const statInputs = Array.from(document.querySelectorAll(".stat-value"));
 const toNum = (value) => Math.max(0, Math.floor(Number(value) || 0));
 const clampLevel = (value) => Math.max(1, Math.min(112, Math.floor(Number(value) || 1)));
-function updatePoints(){
-  const levelTotal = Array.from(document.querySelectorAll(".level-input")).reduce((sum,input)=>sum+clampLevel(input.value),0);
-  points.value = 20 + levelTotal - 4 - usedPoints();
+const isValidLevel = (value) => /^([1-9][0-9]?|10[0-9]|11[0-2])$/.test(value);
+function nextInputValue(input, text){
+  const start = input.selectionStart ?? input.value.length;
+  const end = input.selectionEnd ?? input.value.length;
+  return input.value.slice(0,start) + text + input.value.slice(end);
 }
-function usedPoints(){return statInputs.reduce((sum,input)=>sum+Math.max(0,toNum(input.value)-5),0);}
+function totalPoints(){
+  const levelTotal = Array.from(document.querySelectorAll(".level-input")).reduce((sum,input)=>sum+clampLevel(input.value),0);
+  return 20 + levelTotal - 4;
+}
+function statSpent(input){return Math.max(0,toNum(input.value)-5);}
+function usedPoints(){return statInputs.reduce((sum,input)=>sum+statSpent(input),0);}
+function updatePoints(){points.value = Math.max(0,totalPoints() - usedPoints());}
+function maxStatValue(input){
+  const usedByOthers = statInputs.reduce((sum,item)=>item===input ? sum : sum + statSpent(item),0);
+  return 5 + Math.max(0,totalPoints() - usedByOthers);
+}
+function clampStat(input){
+  input.value = Math.max(5,Math.min(maxStatValue(input),toNum(input.value) || 5));
+  input.dataset.lastValid = input.value;
+}
 document.querySelectorAll(".level-input").forEach((input)=>{
-  input.addEventListener("change",()=>{input.value=clampLevel(input.value);updatePoints();});
-  input.addEventListener("blur",()=>{input.value=clampLevel(input.value);updatePoints();});
-  input.addEventListener("input",updatePoints);
+  input.dataset.lastValid = input.value;
+  input.addEventListener("focus",()=>input.select());
+  input.addEventListener("click",()=>input.select());
+  input.addEventListener("beforeinput",(event)=>{
+    if (!event.data) return;
+    if (!/^\d+$/.test(event.data)) {
+      event.preventDefault();
+      return;
+    }
+    const nextValue = nextInputValue(input,event.data);
+    if (nextValue !== "" && !isValidLevel(nextValue)) event.preventDefault();
+  });
+  input.addEventListener("input",()=>{
+    if (input.value === "") {
+      updatePoints();
+      return;
+    }
+    if (!isValidLevel(input.value)) {
+      input.value = input.dataset.lastValid || "1";
+    } else {
+      input.dataset.lastValid = input.value;
+    }
+    updatePoints();
+  });
+  input.addEventListener("change",()=>{input.value=clampLevel(input.value);input.dataset.lastValid=input.value;updatePoints();});
+  input.addEventListener("blur",()=>{input.value=clampLevel(input.value);input.dataset.lastValid=input.value;updatePoints();});
 });
 document.querySelectorAll(".info-row").forEach((row)=>{
   const input=row.querySelector(".level-input");
@@ -95,13 +134,45 @@ document.querySelectorAll(".info-row").forEach((row)=>{
 updatePoints();
 document.querySelectorAll(".stat-row").forEach((row)=>{
   const input = row.querySelector(".stat-value");
+  input.dataset.lastValid = input.value;
+  input.addEventListener("focus",()=>{
+    input.select();
+  });
+  input.addEventListener("click",()=>input.select());
+  input.addEventListener("beforeinput",(event)=>{
+    if (!event.data) return;
+    if (!/^\d+$/.test(event.data)) {
+      event.preventDefault();
+      return;
+    }
+    const nextValue = nextInputValue(input,event.data);
+    if (nextValue !== "" && Number(nextValue) > maxStatValue(input)) event.preventDefault();
+  });
+  input.addEventListener("input",()=>{
+    if (input.value === "") {
+      updatePoints();
+      return;
+    }
+    if (!/^\d+$/.test(input.value)) {
+      input.value = input.dataset.lastValid || "5";
+    }
+    if (toNum(input.value) > maxStatValue(input)) {
+      input.value = String(maxStatValue(input));
+    }
+    input.dataset.lastValid = input.value;
+    updatePoints();
+  });
+  input.addEventListener("change",()=>{clampStat(input);updatePoints();});
+  input.addEventListener("blur",()=>{clampStat(input);updatePoints();});
   row.querySelector(".plus").addEventListener("click",()=>{
     if (toNum(points.value) <= 0) return;
     input.value = toNum(input.value) + 1;
+    input.dataset.lastValid = input.value;
     updatePoints();
   });
   row.querySelector(".minus").addEventListener("click",()=>{
     input.value = Math.max(5, toNum(input.value) - 1);
+    input.dataset.lastValid = input.value;
     updatePoints();
   });
 });
