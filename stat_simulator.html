@@ -57,10 +57,10 @@ body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(
         <input id="points" class="points" value="20" readonly>
       </div>
       <div class="stat-list">
-        <div class="stat-row" data-stat="power"><div class="stat-name">전 략</div><input class="stat-value" value="5" readonly><button class="step plus" type="button" disabled>▲</button><button class="step minus" type="button" disabled>▼</button></div>
-        <div class="stat-row" data-stat="politics"><div class="stat-name">정 치</div><input class="stat-value" value="5" readonly><button class="step plus" type="button" disabled>▲</button><button class="step minus" type="button" disabled>▼</button></div>
-        <div class="stat-row" data-stat="knowledge"><div class="stat-name">지 식</div><input class="stat-value" value="5" readonly><button class="step plus" type="button" disabled>▲</button><button class="step minus" type="button" disabled>▼</button></div>
-        <div class="stat-row" data-stat="tech"><div class="stat-name">기 술</div><input class="stat-value" value="5" readonly><button class="step plus" type="button" disabled>▲</button><button class="step minus" type="button" disabled>▼</button></div>
+        <div class="stat-row" data-stat="power"><div class="stat-name">전 략</div><input class="stat-value" value="5" readonly><button class="step plus" type="button">▲</button><button class="step minus" type="button">▼</button></div>
+        <div class="stat-row" data-stat="politics"><div class="stat-name">정 치</div><input class="stat-value" value="5" readonly><button class="step plus" type="button">▲</button><button class="step minus" type="button">▼</button></div>
+        <div class="stat-row" data-stat="knowledge"><div class="stat-name">지 식</div><input class="stat-value" value="5" readonly><button class="step plus" type="button">▲</button><button class="step minus" type="button">▼</button></div>
+        <div class="stat-row" data-stat="tech"><div class="stat-name">기 술</div><input class="stat-value" value="5" readonly><button class="step plus" type="button">▲</button><button class="step minus" type="button">▼</button></div>
       </div>
       <div class="hint">포인트를 입력한 뒤 ▲▼로 분배하세요.</div>
     </section>
@@ -73,9 +73,9 @@ const toNum = (value) => Math.max(0, Math.floor(Number(value) || 0));
 const clampLevel = (value) => Math.max(1, Math.min(112, Math.floor(Number(value) || 1)));
 function updatePoints(){
   const levelTotal = Array.from(document.querySelectorAll(".level-input")).reduce((sum,input)=>sum+clampLevel(input.value),0);
-  points.value = 20 + levelTotal - 4;
+  points.value = 20 + levelTotal - 4 - usedPoints();
 }
-function usedPoints(){return statInputs.reduce((sum,input)=>sum+toNum(input.value),0);}
+function usedPoints(){return statInputs.reduce((sum,input)=>sum+Math.max(0,toNum(input.value)-5),0);}
 document.querySelectorAll(".level-input").forEach((input)=>{
   input.addEventListener("change",()=>{input.value=clampLevel(input.value);updatePoints();});
   input.addEventListener("blur",()=>{input.value=clampLevel(input.value);updatePoints();});
@@ -96,11 +96,13 @@ updatePoints();
 document.querySelectorAll(".stat-row").forEach((row)=>{
   const input = row.querySelector(".stat-value");
   row.querySelector(".plus").addEventListener("click",()=>{
-    if (usedPoints() >= toNum(points.value)) return;
+    if (toNum(points.value) <= 0) return;
     input.value = toNum(input.value) + 1;
+    updatePoints();
   });
   row.querySelector(".minus").addEventListener("click",()=>{
-    input.value = Math.max(0, toNum(input.value) - 1);
+    input.value = Math.max(5, toNum(input.value) - 1);
+    updatePoints();
   });
 });
 </script>
