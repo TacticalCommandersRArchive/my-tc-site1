@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>스탯 시뮬레이터</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(0,170,255,.14),transparent 26rem),radial-gradient(circle at 88% 12%,rgba(30,191,255,.10),transparent 26rem),linear-gradient(135deg,rgba(255,255,255,.018) 25%,transparent 25%) 0 0/18px 18px,#070b12;color:#dff8ff;font-family:Bahnschrift,"Noto Sans KR","Malgun Gothic",system-ui,sans-serif;padding-top:20px}
+.shell{width:min(1200px,calc(100vw - 24px));margin:0 auto;padding-bottom:28px}
+.home-banner{display:block;width:100%;max-width:1200px;margin:0 auto 24px;border-radius:8px;box-shadow:0 10px 24px rgba(0,0,0,.45)}
+.sim-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start;max-width:760px;margin:0 auto}
+.panel{position:relative;min-height:261px;border:1px solid rgba(139,232,255,.55);background:linear-gradient(180deg,rgba(3,7,13,.95),rgba(1,3,5,.98));box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),0 14px 28px rgba(0,0,0,.45);padding:30px 12px 12px}
+.panel-title{position:absolute;top:-12px;left:50%;transform:translateX(-50%);min-width:140px;padding:3px 18px;border:1px solid rgba(139,232,255,.65);background:#03070d;color:#f4fbff;text-align:center;font-weight:800;letter-spacing:2px;text-shadow:0 1px 2px #000,0 0 7px rgba(0,165,220,.55)}
+.info-list{display:grid;grid-template-rows:auto repeat(4,1fr);min-height:205px;padding:2px 8px}
+.info-head{display:grid;grid-template-columns:48px 72px 62px 32px 32px;gap:7px;justify-content:center;align-items:end;color:#dff8ff;font-size:14px;font-weight:800;letter-spacing:2px;text-align:center}
+.info-row{display:grid;grid-template-columns:48px 72px 62px 32px 32px;gap:7px;align-items:center;justify-content:center;color:#f0f6f7;font-size:18px;font-weight:800}
+.class-icon{width:44px;height:44px;object-fit:contain;image-rendering:pixelated}
+.class-icon.empty{visibility:hidden}
+.label{color:#f0f6f7;letter-spacing:2px}
+.value{min-height:26px;color:#dff8ff;text-align:left}
+.level-input{width:62px;height:31px;border:1px solid rgba(139,232,255,.45);background:#050b14;color:#e7fbff;text-align:center;font:inherit;font-weight:800}
+.stat-head{display:grid;grid-template-columns:92px 1fr;gap:8px;align-items:center;margin-bottom:12px}
+.stat-head label{font-weight:800;letter-spacing:3px;text-align:center}
+.points{height:30px;border:1px solid rgba(139,232,255,.5);background:#050b14;color:#dff8ff;text-align:center;font:inherit;font-weight:800}
+.stat-list{display:grid;gap:8px}
+.stat-row{display:grid;grid-template-columns:76px 1fr 26px 26px;gap:5px;align-items:center}
+.stat-name{height:30px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(139,232,255,.45);background:#060b0b;font-weight:800;letter-spacing:4px}
+.stat-value{height:30px;border:1px solid rgba(139,232,255,.35);background:#050b14;color:#e7fbff;text-align:center;font:inherit;font-weight:800}
+.stat-value[readonly]{opacity:.95;cursor:default}
+.step{height:31px;border:1px solid rgba(139,232,255,.45);background:#07111b;color:#dff8ff;cursor:pointer;font-weight:900}
+.step:hover{border-color:#dff8ff;color:#fff}
+.hint{margin-top:12px;color:#8fb8c8;font-size:13px;line-height:1.45;text-align:right}
+@media(max-width:760px){.sim-grid{grid-template-columns:1fr}.panel{min-height:auto}.home-banner{margin-bottom:18px}}
+</style>
+</head>
+<body>
+<main class="shell">
+  <a href="index_dropdown.html" title="메인 화면으로 돌아가기">
+    <img class="home-banner" src="channels_banner_title.jpg" alt="Tactical Commanders R Community Archive">
+  </a>
+  <div class="sim-grid">
+    <section class="panel">
+      <div class="panel-title">병과정보</div>
+      <div class="info-list">
+        <div class="info-head"><div></div><div></div><div>레벨</div><div></div><div></div></div>
+        <div class="info-row"><img class="class-icon" src="infantry_anim.gif" alt=""><div class="label">보 병</div><input class="level-input" value="1" min="1" max="112" inputmode="numeric"><button class="step level-plus" type="button">▲</button><button class="step level-minus" type="button">▼</button></div>
+        <div class="info-row"><img class="class-icon" src="tank_anim.gif" alt=""><div class="label">전 차</div><input class="level-input" value="1" min="1" max="112" inputmode="numeric"><button class="step level-plus" type="button">▲</button><button class="step level-minus" type="button">▼</button></div>
+        <div class="info-row"><img class="class-icon" src="air_anim.gif" alt=""><div class="label">비 행</div><input class="level-input" value="1" min="1" max="112" inputmode="numeric"><button class="step level-plus" type="button">▲</button><button class="step level-minus" type="button">▼</button></div>
+        <div class="info-row"><img class="class-icon" src="special_anim.gif" alt=""><div class="label">특 수</div><input class="level-input" value="1" min="1" max="112" inputmode="numeric"><button class="step level-plus" type="button">▲</button><button class="step level-minus" type="button">▼</button></div>
+      </div>
+    </section>
+    <section class="panel">
+      <div class="panel-title">특성치</div>
+      <div class="stat-head">
+        <label for="points">포인트</label>
+        <input id="points" class="points" value="20" readonly>
+      </div>
+      <div class="stat-list">
+        <div class="stat-row" data-stat="power"><div class="stat-name">전 략</div><input class="stat-value" value="5" readonly><button class="step plus" type="button" disabled>▲</button><button class="step minus" type="button" disabled>▼</button></div>
+        <div class="stat-row" data-stat="politics"><div class="stat-name">정 치</div><input class="stat-value" value="5" readonly><button class="step plus" type="button" disabled>▲</button><button class="step minus" type="button" disabled>▼</button></div>
+        <div class="stat-row" data-stat="knowledge"><div class="stat-name">지 식</div><input class="stat-value" value="5" readonly><button class="step plus" type="button" disabled>▲</button><button class="step minus" type="button" disabled>▼</button></div>
+        <div class="stat-row" data-stat="tech"><div class="stat-name">기 술</div><input class="stat-value" value="5" readonly><button class="step plus" type="button" disabled>▲</button><button class="step minus" type="button" disabled>▼</button></div>
+      </div>
+      <div class="hint">포인트를 입력한 뒤 ▲▼로 분배하세요.</div>
+    </section>
+  </div>
+</main>
+<script>
+const points = document.getElementById("points");
+const statInputs = Array.from(document.querySelectorAll(".stat-value"));
+const toNum = (value) => Math.max(0, Math.floor(Number(value) || 0));
+const clampLevel = (value) => Math.max(1, Math.min(112, Math.floor(Number(value) || 1)));
+function updatePoints(){
+  const levelTotal = Array.from(document.querySelectorAll(".level-input")).reduce((sum,input)=>sum+clampLevel(input.value),0);
+  points.value = 20 + levelTotal - 4;
+}
+function usedPoints(){return statInputs.reduce((sum,input)=>sum+toNum(input.value),0);}
+document.querySelectorAll(".level-input").forEach((input)=>{
+  input.addEventListener("change",()=>{input.value=clampLevel(input.value);updatePoints();});
+  input.addEventListener("blur",()=>{input.value=clampLevel(input.value);updatePoints();});
+  input.addEventListener("input",updatePoints);
+});
+document.querySelectorAll(".info-row").forEach((row)=>{
+  const input=row.querySelector(".level-input");
+  row.querySelector(".level-plus").addEventListener("click",()=>{
+    input.value=clampLevel(clampLevel(input.value)+1);
+    updatePoints();
+  });
+  row.querySelector(".level-minus").addEventListener("click",()=>{
+    input.value=clampLevel(clampLevel(input.value)-1);
+    updatePoints();
+  });
+});
+updatePoints();
+document.querySelectorAll(".stat-row").forEach((row)=>{
+  const input = row.querySelector(".stat-value");
+  row.querySelector(".plus").addEventListener("click",()=>{
+    if (usedPoints() >= toNum(points.value)) return;
+    input.value = toNum(input.value) + 1;
+  });
+  row.querySelector(".minus").addEventListener("click",()=>{
+    input.value = Math.max(0, toNum(input.value) - 1);
+  });
+});
+</script>
+</body>
+</html>
