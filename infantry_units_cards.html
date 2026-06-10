@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>보병 계열 카드형</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(0,170,255,.14),transparent 26rem),radial-gradient(circle at 88% 12%,rgba(30,191,255,.10),transparent 26rem),linear-gradient(135deg,rgba(255,255,255,.018) 25%,transparent 25%) 0 0/18px 18px,#070b12;color:#dff8ff;font-family:Bahnschrift,"Malgun Gothic",Arial,sans-serif;padding-top:20px}
+.shell{width:min(1200px,calc(100vw - 24px));margin:0 auto;padding-bottom:36px}
+.home-banner{display:block;width:100%;max-width:1200px;margin:0 auto 24px;border-radius:8px;box-shadow:0 10px 24px rgba(0,0,0,.45)}
+.page-title{width:min(980px,100%);margin:0 auto 14px;padding:9px 14px;border:1px solid rgba(139,232,255,.45);background:linear-gradient(180deg,#18222a,#0b0f13);font-size:18px;text-align:center;letter-spacing:2px;text-shadow:0 1px 2px #000,0 0 7px rgba(0,165,220,.55)}
+.unit-grid{width:min(980px,100%);margin:0 auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.unit-card{display:grid;grid-template-columns:130px 1fr;gap:12px;min-height:190px;border:1px solid rgba(139,232,255,.45);background:linear-gradient(180deg,rgba(3,7,13,.95),rgba(1,3,5,.98));box-shadow:inset 0 0 0 1px rgba(255,255,255,.07),0 12px 24px rgba(0,0,0,.4);padding:12px}
+.unit-visual{display:grid;grid-template-rows:auto 1fr;gap:7px}
+.unit-art{display:flex;align-items:center;justify-content:center;min-height:128px;border:1px solid rgba(139,232,255,.22);background:#020509}
+.unit-art img{width:104px;height:104px;object-fit:contain;image-rendering:pixelated}
+.unit-info{display:grid;grid-template-rows:auto 1fr;gap:8px;min-width:0}
+.unit-name{margin:0;padding:6px 8px;border:1px solid rgba(139,232,255,.32);background:#07111b;color:#fff;font-size:18px;text-align:center;letter-spacing:1px;text-shadow:0 1px 2px #000,0 0 7px rgba(0,165,220,.45)}
+.stats{display:grid;grid-template-columns:1fr;gap:6px}
+.stat{display:grid;grid-template-columns:92px 1fr;align-items:center;border:1px solid rgba(139,232,255,.25);background:rgba(5,11,20,.9);padding:6px 8px;text-align:left}
+.stat b{display:block;margin:0;color:#8fb8c8;font-size:12px}
+.stat span{font-weight:800;color:#e7fbff}
+.skill{position:relative;border:1px solid rgba(139,232,255,.22);background:rgba(4,9,15,.82);padding:8px;color:#dff8ff;line-height:1.5;font-size:14px;white-space:normal}
+.skill b{display:flex;align-items:center;gap:5px;width:max-content;margin-bottom:4px;color:#8fb8c8}
+.skill-icon{width:18px;height:18px;object-fit:contain;image-rendering:pixelated}
+@media(max-width:900px){.unit-grid{grid-template-columns:1fr}.unit-card{grid-template-columns:120px 1fr}.unit-art img{width:96px;height:96px}}
+@media(max-width:560px){.unit-card{grid-template-columns:1fr}.unit-art{min-height:128px}.stat{grid-template-columns:84px 1fr}}
+</style>
+</head>
+<body>
+<main class="shell">
+  <a href="index.html" title="메인 화면으로 돌아가기">
+    <img class="home-banner" src="images/channels_banner_title.jpg" alt="Tactical Commanders R Community Archive">
+  </a>
+  <h1 class="page-title">보병 계열</h1>
+  <div class="unit-grid">
+    <article class="unit-card">
+      <div class="unit-visual"><h2 class="unit-name">휴머노이드</h2><div class="unit-art"><img src="images/유닛/보병/humanoid_anim.gif" alt=""></div></div>
+      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>1400</span></div><div class="stat"><b>기본방어력</b><span>0</span></div><div class="stat"><b>이동속도</b><span>2.4 m/s</span></div></div><div class="skill"><b>특수능력</b>클로킹.앰플.레비. 위장.회로장애.부스터</div></div>
+    </article>
+    <article class="unit-card">
+      <div class="unit-visual"><h2 class="unit-name">바즈노이드</h2><div class="unit-art"><img src="images/유닛/보병/baznoid_anim.gif" alt=""></div></div>
+      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>2000</span></div><div class="stat"><b>기본방어력</b><span>10</span></div><div class="stat"><b>이동속도</b><span>2.6 m/s</span></div></div><div class="skill"><b>특수능력</b>클로킹.앰플.레비데이드(탄자국없음)</div></div>
+    </article>
+    <article class="unit-card">
+      <div class="unit-visual"><h2 class="unit-name">레일건너</h2><div class="unit-art"><img src="images/유닛/보병/railgunner_anim.gif" alt=""></div></div>
+      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>1800</span></div><div class="stat"><b>기본방어력</b><span>1</span></div><div class="stat"><b>이동속도</b><span>3.0 m/s</span></div></div><div class="skill"><b>특수능력</b>클로킹.앰플.레비. 수류탄.EMP수류탄류</div></div>
+    </article>
+    <article class="unit-card">
+      <div class="unit-visual"><h2 class="unit-name">GTA로켓런처</h2><div class="unit-art"><img src="images/유닛/보병/gta_rocket_anim.gif" alt=""></div></div>
+      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>1300</span></div><div class="stat"><b>기본방어력</b><span>5</span></div><div class="stat"><b>이동속도</b><span>1.6 m/s</span></div></div><div class="skill"><b>특수능력</b>클로킹.앰플.레비.뷰어. 핵</div></div>
+    </article>
+    <article class="unit-card">
+      <div class="unit-visual"><h2 class="unit-name">샤크</h2><div class="unit-art"><img src="images/유닛/보병/shark_anim.gif" alt=""></div></div>
+      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>1650</span></div><div class="stat"><b>기본방어력</b><span>8</span></div><div class="stat"><b>이동속도</b><span>2.2 m/s</span></div></div><div class="skill"><b>특수능력</b>클로킹.앰플.레비. 부양.페트리어트</div></div>
+    </article>
+    <article class="unit-card">
+      <div class="unit-visual"><h2 class="unit-name">골리앗</h2><div class="unit-art"><img src="images/유닛/보병/goliath_anim.gif" alt=""></div></div>
+      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>1600</span></div><div class="stat"><b>기본방어력</b><span>8</span></div><div class="stat"><b>이동속도</b><span>3.3 m/s</span></div></div><div class="skill"><b>특수능력 <img class="skill-icon" src="images/icon/circuit_attack.png" alt=""></b>클로킹.앰플.레비. 인슐레이트,I,II,III</div></div>
+    </article>
+    <article class="unit-card">
+      <div class="unit-visual"><h2 class="unit-name">트윈발칸</h2><div class="unit-art"><img src="images/유닛/보병/twin_vulcan_anim.gif" alt=""></div></div>
+      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>1600</span></div><div class="stat"><b>기본방어력</b><span>0</span></div><div class="stat"><b>이동속도</b><span>4.0 m/s</span></div></div><div class="skill"><b>특수능력</b>클로킹.앰플.레비. EMP건</div></div>
+    </article>
+    <article class="unit-card">
+      <div class="unit-visual"><h2 class="unit-name">엑소노이드</h2><div class="unit-art"><img src="images/유닛/보병/exonoid_anim.gif" alt=""></div></div>
+      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>2000</span></div><div class="stat"><b>기본방어력</b><span>5</span></div><div class="stat"><b>이동속도</b><span>3.2 m/s</span></div></div><div class="skill"><b>특수능력</b>클로킹.앰플.레비</div></div>
+    </article>
+    <article class="unit-card">
+      <div class="unit-visual"><h2 class="unit-name">틸라노이드</h2><div class="unit-art"><img src="images/유닛/보병/tilanoid_anim.gif" alt=""></div></div>
+      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>2000</span></div><div class="stat"><b>기본방어력</b><span>10</span></div><div class="stat"><b>이동속도</b><span>1.4 m/s</span></div></div><div class="skill"><b>특수능력</b>퀀텀클로킹.앰플.레비. 텔레포트</div></div>
+    </article>
+    <article class="unit-card">
+      <div class="unit-visual"><h2 class="unit-name">자이언트</h2><div class="unit-art"><img src="images/유닛/보병/giant_anim.gif" alt=""></div></div>
+      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>2000</span></div><div class="stat"><b>기본방어력</b><span>12</span></div><div class="stat"><b>이동속도</b><span>3.6 m/s</span></div></div><div class="skill"><b>특수능력</b>레비클로킹.부스터.캐모플라쥬.어스퀘이크</div></div>
+    </article>
+    <article class="unit-card">
+      <div class="unit-visual"><h2 class="unit-name">블레이드</h2><div class="unit-art"><img src="images/유닛/보병/blade_anim.gif" alt=""></div></div>
+      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>1600</span></div><div class="stat"><b>기본방어력</b><span>8</span></div><div class="stat"><b>이동속도</b><span>7.5 m/s</span></div></div><div class="skill"><b>특수능력</b>클로킹.앰플.레비</div></div>
+    </article>
+    <article class="unit-card">
+      <div class="unit-visual"><h2 class="unit-name">팬텀</h2><div class="unit-art"><img src="images/유닛/보병/phantom_anim.gif" alt=""></div></div>
+      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>1050</span></div><div class="stat"><b>기본방어력</b><span>0</span></div><div class="stat"><b>이동속도</b><span>4.8 m/s</span></div></div><div class="skill"><b>특수능력</b>클로킹.앰플.레비. 조명탄</div></div>
+    </article>
+    <article class="unit-card">
+      <div class="unit-visual"><h2 class="unit-name">스나이퍼</h2><div class="unit-art"><img src="images/유닛/보병/sniper_anim.gif" alt=""></div></div>
+      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>600</span></div><div class="stat"><b>기본방어력</b><span>0</span></div><div class="stat"><b>이동속도</b><span>3.0 m/s</span></div></div><div class="skill"><b>특수능력</b>클로킹-EF. 저격모드</div></div>
+    </article>
+  </div>
+</main>
+<script>
+const savedTable = localStorage.getItem("tc_infantry_units_table_v3") || localStorage.getItem("tc_infantry_units_table_v2") || localStorage.getItem("tc_infantry_units_table_v1");
+function ensureSkillIcon(unitName,imageSrc){
+  const card = Array.from(document.querySelectorAll(".unit-card")).find((item)=>item.querySelector(".unit-name")?.textContent.trim() === unitName);
+  const skill = card?.querySelector(".skill");
+  const label = skill.querySelector("b");
+  if (!skill || !label) return;
+  if (Array.from(label.querySelectorAll(".skill-icon")).some((icon)=>icon.getAttribute("src") === imageSrc)) return;
+  label.insertAdjacentHTML("beforeend",` <img class="skill-icon" src="${imageSrc}" alt="">`);
+}
+if (savedTable) {
+  const template = document.createElement("template");
+  template.innerHTML = `<table><tbody>${savedTable}</tbody></table>`;
+  const savedUnits = Array.from(template.content.querySelectorAll("tbody tr")).map((row) => {
+    const cells = Array.from(row.children);
+    return {
+      name: cells[0]?.textContent.trim(),
+      hp: cells[1]?.textContent.trim(),
+      armor: cells[2]?.textContent.trim(),
+      speed: cells[3]?.textContent.trim(),
+      skill: cells[4]?.textContent.trim()
+    };
+  }).filter((unit) => unit.name);
+
+  savedUnits.forEach((unit) => {
+    const card = Array.from(document.querySelectorAll(".unit-card")).find((item) => {
+      const name = item.querySelector(".unit-name")?.textContent.trim();
+      const savedName = unit.name.replace("바조노이드","바즈노이드");
+      return name && (savedName.includes(name) || name.includes(savedName));
+    });
+    if (!card) return;
+    const statValues = card.querySelectorAll(".stat span");
+    if (statValues[0] && unit.hp) statValues[0].textContent = unit.hp;
+    if (statValues[1] && unit.armor) statValues[1].textContent = unit.armor;
+    if (statValues[2] && unit.speed) statValues[2].textContent = unit.speed;
+    const skill = card.querySelector(".skill");
+    if (skill && unit.skill) skill.innerHTML = `<b>특수능력</b>${unit.skill}`;
+  });
+}
+[
+  "휴머노이드",
+  "바즈노이드",
+  "레일건너",
+  "GTA로켓런처",
+  "샤크",
+  "골리앗",
+  "트윈발칸",
+  "엑소노이드",
+  "틸라노이드",
+  "자이언트",
+  "블레이드",
+  "팬텀",
+  "스나이퍼"
+].forEach((unitName)=>ensureSkillIcon(unitName,"images/icon/stealth_icon.png"));
+[
+  "휴머노이드",
+  "바즈노이드",
+  "레일건너",
+  "GTA로켓런처",
+  "샤크",
+  "골리앗",
+  "트윈발칸",
+  "엑소노이드",
+  "틸라노이드",
+  "블레이드",
+  "팬텀"
+].forEach((unitName)=>ensureSkillIcon(unitName,"images/icon/refuel_icon.png"));
+[
+  "휴머노이드",
+  "바즈노이드",
+  "레일건너",
+  "GTA로켓런처",
+  "샤크",
+  "골리앗",
+  "트윈발칸",
+  "엑소노이드",
+  "틸라노이드",
+  "블레이드",
+  "팬텀"
+].forEach((unitName)=>ensureSkillIcon(unitName,"images/icon/levitation_icon.png"));
+ensureSkillIcon("휴머노이드","images/icon/after_booster_icon.png");
+ensureSkillIcon("휴머노이드","images/icon/camouflage_icon.png");
+ensureSkillIcon("휴머노이드","images/icon/circuit_attack.png");
+ensureSkillIcon("샤크","images/icon/levitation_icon.png");
+ensureSkillIcon("샤크","images/icon/icbm_defender_icon.png");
+ensureSkillIcon("골리앗","images/icon/circuit_attack.png");
+ensureSkillIcon("GTA로켓런처","images/icon/icbm_icon.png");
+ensureSkillIcon("레일건너","images/icon/grenade_icon.png");
+ensureSkillIcon("트윈발칸","images/icon/emp_attack_icon.png");
+ensureSkillIcon("틸라노이드","images/icon/warp_icon.png");
+ensureSkillIcon("자이언트","images/icon/after_booster_icon.png");
+ensureSkillIcon("자이언트","images/icon/earthquake_icon.png");
+ensureSkillIcon("자이언트","images/icon/camouflage_skill_icon.png");
+ensureSkillIcon("팬텀","images/icon/flare_icon.png");
+</script>
+</body>
+</html>
