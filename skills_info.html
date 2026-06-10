@@ -12,14 +12,23 @@ body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(
 .home-banner{display:block;width:100%;max-width:1200px;margin:0 auto 24px;border-radius:8px;box-shadow:0 10px 24px rgba(0,0,0,.45)}
 .page-title{width:min(980px,100%);margin:0 auto 14px;padding:9px 14px;border:1px solid rgba(139,232,255,.45);background:linear-gradient(180deg,#18222a,#0b0f13);font-family:"Orbitron","Noto Sans KR",sans-serif;font-size:18px;font-weight:800;text-align:center;letter-spacing:2px;text-shadow:0 1px 2px #000,0 0 7px rgba(0,165,220,.55)}
 .skill-list{width:min(980px,100%);margin:0 auto;display:grid;gap:10px}
-.skill-row{display:grid;grid-template-columns:70px 160px 1fr;align-items:center;gap:8px;min-height:86px;border:1px solid rgba(139,232,255,.45);background:linear-gradient(180deg,rgba(3,7,13,.95),rgba(1,3,5,.98));box-shadow:inset 0 0 0 1px rgba(255,255,255,.07),0 10px 22px rgba(0,0,0,.38);padding:10px 12px;scroll-margin-block:calc(50vh - 43px)}
+.skill-row{position:relative;display:grid;grid-template-columns:70px 160px 1fr;align-items:center;gap:8px;min-height:86px;border:1px solid rgba(139,232,255,.45);background:linear-gradient(180deg,rgba(3,7,13,.95),rgba(1,3,5,.98));box-shadow:inset 0 0 0 1px rgba(255,255,255,.07),0 10px 22px rgba(0,0,0,.38);padding:10px 12px;scroll-margin-block:calc(50vh - 43px)}
 .skill-row:target{border-color:rgba(112,255,160,.9);box-shadow:inset 0 0 0 1px rgba(112,255,160,.26),0 0 20px rgba(112,255,160,.18),0 10px 22px rgba(0,0,0,.38)}
 .skill-row:target .skill-name::before{content:"▶ ";color:#80ff9d;text-shadow:0 0 8px rgba(112,255,160,.8)}
+.skill-row.has-demo::before{content:"★";position:absolute;top:5px;left:6px;color:#80ff9d;font-size:13px;line-height:1;text-shadow:0 0 8px rgba(112,255,160,.9)}
 .skill-icon-box{display:flex;align-items:center;justify-content:center;width:62px;height:62px;border:1px solid rgba(139,232,255,.24);background:#020509}
 .skill-icon-box img{width:42px;height:42px;object-fit:contain;image-rendering:pixelated}
 .skill-name{cursor:default;margin:0;color:#fff;font-size:18px;font-weight:900;white-space:nowrap;text-shadow:0 1px 2px #000,0 0 7px rgba(0,165,220,.45);outline:0}
+.demo-trigger{cursor:pointer}
+.demo-trigger:hover{border-color:rgba(112,255,160,.75);color:#fff;text-shadow:0 1px 2px #000,0 0 10px rgba(112,255,160,.75)}
 
 .skill-desc{cursor:default;min-height:46px;border:1px solid rgba(139,232,255,.22);background:rgba(4,9,15,.82);padding:10px 12px;color:#dff8ff;font-size:18px;font-weight:900;line-height:1.5;outline:0;text-shadow:0 1px 2px #000,0 0 7px rgba(0,165,220,.35)}
+.demo-modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.78);z-index:100;padding:22px}
+.demo-modal.open{display:flex}
+.demo-box{position:relative;width:min(760px,calc(100vw - 44px));border:1px solid rgba(139,232,255,.55);background:#020509;box-shadow:0 0 28px rgba(0,170,255,.24),0 18px 40px rgba(0,0,0,.7);padding:12px}
+.demo-box img{display:block;width:100%;height:auto;image-rendering:pixelated}
+.demo-close{position:absolute;top:8px;right:8px;width:34px;height:34px;border:1px solid rgba(139,232,255,.55);background:rgba(3,7,13,.92);color:#e7fbff;font-size:20px;font-weight:900;cursor:pointer}
+.demo-close:hover{background:rgba(30,191,255,.18)}
 
 @media(max-width:720px){.skill-row{grid-template-columns:72px 1fr}.skill-desc{grid-column:1/-1}.skill-icon-box{width:58px;height:58px}.skill-icon-box img{width:40px;height:40px}}
 </style>
@@ -156,9 +165,9 @@ body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(
       <h2 class="skill-name">기뢰</h2>
       <div class="skill-desc">기뢰를 부설합니다</div>
     </article>
-    <article class="skill-row" id="carpet-bombing">
-      <div class="skill-icon-box"><img src="images/icon/Carpet bombing.png" alt=""></div>
-      <h2 class="skill-name">융단 폭격</h2>
+    <article class="skill-row has-demo" id="carpet-bombing">
+      <div class="skill-icon-box demo-trigger" data-demo="video/융단.gif" data-demo-title="융단 폭격"><img src="images/icon/Carpet bombing.png" alt=""></div>
+      <h2 class="skill-name demo-trigger" data-demo="video/융단.gif" data-demo-title="융단 폭격">융단 폭격</h2>
       <div class="skill-desc">지나가는 경로에 폭격을 가합니다</div>
     </article>
     <article class="skill-row">
@@ -188,5 +197,39 @@ body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(
     </article>
   </div>
 </main>
+<div class="demo-modal" id="demo-modal" aria-hidden="true">
+  <div class="demo-box">
+    <button class="demo-close" type="button" aria-label="닫기">×</button>
+    <img id="demo-image" src="" alt="">
+  </div>
+</div>
+<script>
+const demoModal = document.getElementById("demo-modal");
+const demoImage = document.getElementById("demo-image");
+const demoClose = demoModal.querySelector(".demo-close");
+
+document.querySelectorAll(".demo-trigger[data-demo]").forEach((trigger) => {
+  trigger.addEventListener("click", () => {
+    demoImage.src = trigger.dataset.demo;
+    demoImage.alt = trigger.dataset.demoTitle || "특수능력 시연";
+    demoModal.classList.add("open");
+    demoModal.setAttribute("aria-hidden", "false");
+  });
+});
+
+function closeDemo() {
+  demoModal.classList.remove("open");
+  demoModal.setAttribute("aria-hidden", "true");
+  demoImage.src = "";
+}
+
+demoClose.addEventListener("click", closeDemo);
+demoModal.addEventListener("click", (event) => {
+  if (event.target === demoModal) closeDemo();
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && demoModal.classList.contains("open")) closeDemo();
+});
+</script>
 </body>
 </html>
