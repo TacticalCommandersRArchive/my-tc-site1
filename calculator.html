@@ -8,7 +8,7 @@
     :root {
       color-scheme: dark;
       --content-width: 846px;
-      --bg: #000000;
+      --bg: #070b12;
       --panel: #080a0d;
       --panel-2: #10151a;
       --line: #5f747d;
@@ -35,7 +35,11 @@
       margin: 0 auto;
       min-height: 100vh;
       font-family: "Agency FB", "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(0, 170, 255, .14), transparent 26rem),
+        radial-gradient(circle at 88% 12%, rgba(30, 191, 255, .10), transparent 26rem),
+        linear-gradient(135deg, rgba(255, 255, 255, .018) 25%, transparent 25%) 0 0/18px 18px,
+        var(--bg);
       color: var(--text);
     }
 
@@ -397,7 +401,7 @@
             <th>유닛수</th>
             <th>시작 레벨</th>
             <th>끝나는 레벨</th>
-            <th>한마리 경험치</th>
+            <th>1마리 경험치</th>
             <th>총 경험치</th>
             <th>더하는 경험치</th>
             <th>빼는 경험치</th>
