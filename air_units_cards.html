@@ -26,6 +26,7 @@ body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(
 .skill{position:relative;border:1px solid rgba(139,232,255,.22);background:rgba(4,9,15,.82);padding:8px;color:#dff8ff;line-height:1.5;font-size:14px;white-space:normal}
 .skill b{display:block;width:max-content;margin-bottom:8px;color:#8fb8c8;font-weight:900;letter-spacing:.4px}
 .skill-icons{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-height:34px}
+.skill-link{display:inline-flex;align-items:center;text-decoration:none}
 .skill-empty{color:#5f8795;font-size:12px}
 @media(max-width:900px){.unit-grid{grid-template-columns:1fr}.unit-card{grid-template-columns:120px 1fr}.unit-art img{width:96px;height:96px}.unit-placeholder{width:96px;height:96px}}
 @media(max-width:560px){.unit-card{grid-template-columns:1fr}.unit-art{min-height:128px}.stat{grid-template-columns:84px 1fr}}
@@ -40,15 +41,15 @@ body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(
   <div class="unit-grid">
     <article class="unit-card">
       <div class="unit-visual"><h2 class="unit-name">자낙</h2><div class="unit-art"><img src="images/유닛/비행/자낙.gif" alt=""></div></div>
-      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>1000</span></div><div class="stat"><b>기본방어력</b><span>1</span></div><div class="stat"><b>이동속도</b><span>5.4 m/s</span></div></div><div class="skill"><b>특수능력</b><span class="skill-icons"><img class="skill-icon" src="images/icon/after_booster_icon.png" alt=""><img class="skill-icon" src="images/icon/Carpet bombing.png" alt=""></span></div></div>
+      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>1000</span></div><div class="stat"><b>기본방어력</b><span>1</span></div><div class="stat"><b>이동속도</b><span>5.4 m/s</span></div></div><div class="skill"><b>특수능력</b><span class="skill-icons"><a class="skill-link" href="skills_info.html#booster" title="부스터 설명 보기"><img class="skill-icon" src="images/icon/after_booster_icon.png" alt="부스터"></a><a class="skill-link" href="skills_info.html#carpet-bombing" title="융단 폭격 설명 보기"><img class="skill-icon" src="images/icon/Carpet bombing.png" alt="융단 폭격"></a></span></div></div>
     </article>
     <article class="unit-card">
       <div class="unit-visual"><h2 class="unit-name">엘롬브레</h2><div class="unit-art"><img src="images/유닛/비행/엘롬브레.gif" alt=""></div></div>
-      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>1000</span></div><div class="stat"><b>기본방어력</b><span>1</span></div><div class="stat"><b>이동속도</b><span>4.5 m/s</span></div></div><div class="skill"><b>특수능력</b><span class="skill-icons"><img class="skill-icon" src="images/icon/after_booster_icon.png" alt=""></span></div></div>
+      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>1000</span></div><div class="stat"><b>기본방어력</b><span>1</span></div><div class="stat"><b>이동속도</b><span>4.5 m/s</span></div></div><div class="skill"><b>특수능력</b><span class="skill-icons"><a class="skill-link" href="skills_info.html#booster" title="부스터 설명 보기"><img class="skill-icon" src="images/icon/after_booster_icon.png" alt="부스터"></a></span></div></div>
     </article>
     <article class="unit-card">
       <div class="unit-visual"><h2 class="unit-name">엑소리온</h2><div class="unit-art"><img src="images/유닛/비행/엑소리온.gif" alt=""></div></div>
-      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>950</span></div><div class="stat"><b>기본방어력</b><span>0</span></div><div class="stat"><b>이동속도</b><span>11.0 m/s</span></div></div><div class="skill"><b>특수능력</b><span class="skill-icons"><img class="skill-icon" src="images/icon/after_booster_icon.png" alt=""></span></div></div>
+      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>950</span></div><div class="stat"><b>기본방어력</b><span>0</span></div><div class="stat"><b>이동속도</b><span>11.0 m/s</span></div></div><div class="skill"><b>특수능력</b><span class="skill-icons"><a class="skill-link" href="skills_info.html#booster" title="부스터 설명 보기"><img class="skill-icon" src="images/icon/after_booster_icon.png" alt="부스터"></a></span></div></div>
     </article>
     <article class="unit-card">
       <div class="unit-visual"><h2 class="unit-name">화이어이글</h2><div class="unit-art"><img src="images/유닛/비행/화이어이글.gif" alt=""></div></div>
@@ -56,23 +57,23 @@ body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(
     </article>
     <article class="unit-card">
       <div class="unit-visual"><h2 class="unit-name">에어로파이터</h2><div class="unit-art"><img src="images/유닛/비행/에어로파이터.gif" alt=""></div></div>
-      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>1300</span></div><div class="stat"><b>기본방어력</b><span>2</span></div><div class="stat"><b>이동속도</b><span>5.4 m/s</span></div></div><div class="skill"><b>특수능력</b><span class="skill-icons"><img class="skill-icon" src="images/icon/after_booster_icon.png" alt=""></span></div></div>
+      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>1300</span></div><div class="stat"><b>기본방어력</b><span>2</span></div><div class="stat"><b>이동속도</b><span>5.4 m/s</span></div></div><div class="skill"><b>특수능력</b><span class="skill-icons"><a class="skill-link" href="skills_info.html#booster" title="부스터 설명 보기"><img class="skill-icon" src="images/icon/after_booster_icon.png" alt="부스터"></a></span></div></div>
     </article>
     <article class="unit-card">
       <div class="unit-visual"><h2 class="unit-name">오리온</h2><div class="unit-art"><img src="images/유닛/비행/오리온.gif" alt=""></div></div>
-      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>1050</span></div><div class="stat"><b>기본방어력</b><span>1</span></div><div class="stat"><b>이동속도</b><span>6.0 m/s</span></div></div><div class="skill"><b>특수능력</b><span class="skill-icons"><img class="skill-icon" src="images/icon/after_booster_icon.png" alt=""><img class="skill-icon" src="images/icon/Stealth.png" alt=""></span></div></div>
+      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>1050</span></div><div class="stat"><b>기본방어력</b><span>1</span></div><div class="stat"><b>이동속도</b><span>6.0 m/s</span></div></div><div class="skill"><b>특수능력</b><span class="skill-icons"><a class="skill-link" href="skills_info.html#booster" title="부스터 설명 보기"><img class="skill-icon" src="images/icon/after_booster_icon.png" alt="부스터"></a><a class="skill-link" href="skills_info.html#stealth" title="스텔스 설명 보기"><img class="skill-icon" src="images/icon/Stealth.png" alt="스텔스"></a></span></div></div>
     </article>
     <article class="unit-card">
       <div class="unit-visual"><h2 class="unit-name">익스큐터</h2><div class="unit-art"><img src="images/유닛/비행/익스큐터.gif" alt=""></div></div>
-      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>1700</span></div><div class="stat"><b>기본방어력</b><span>20</span></div><div class="stat"><b>이동속도</b><span>3.0 m/s</span></div></div><div class="skill"><b>특수능력</b><span class="skill-icons"><img class="skill-icon" src="images/icon/Quantum Fire.png" alt=""></span></div></div>
+      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>1700</span></div><div class="stat"><b>기본방어력</b><span>20</span></div><div class="stat"><b>이동속도</b><span>3.0 m/s</span></div></div><div class="skill"><b>특수능력</b><span class="skill-icons"><a class="skill-link" href="skills_info.html#quantum-fire" title="퀀텀 파이어 설명 보기"><img class="skill-icon" src="images/icon/Quantum Fire.png" alt="퀀텀 파이어"></a></span></div></div>
     </article>
     <article class="unit-card">
       <div class="unit-visual"><h2 class="unit-name">펠리우스</h2><div class="unit-art"><img src="images/유닛/비행/펠리우스.gif" alt=""></div></div>
-      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>1000</span></div><div class="stat"><b>기본방어력</b><span>1</span></div><div class="stat"><b>이동속도</b><span>3.0 m/s</span></div></div><div class="skill"><b>특수능력</b><span class="skill-icons"><img class="skill-icon" src="images/icon/Naval mine.png" alt=""></span></div></div>
+      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>1000</span></div><div class="stat"><b>기본방어력</b><span>1</span></div><div class="stat"><b>이동속도</b><span>3.0 m/s</span></div></div><div class="skill"><b>특수능력</b><span class="skill-icons"><a class="skill-link" href="skills_info.html#naval-mine" title="기뢰 설명 보기"><img class="skill-icon" src="images/icon/Naval mine.png" alt="기뢰"></a></span></div></div>
     </article>
     <article class="unit-card">
       <div class="unit-visual"><h2 class="unit-name">제스트</h2><div class="unit-art"><img src="images/유닛/비행/제스트.gif" alt=""></div></div>
-      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>2350</span></div><div class="stat"><b>기본방어력</b><span>6</span></div><div class="stat"><b>이동속도</b><span>6.0 m/s</span></div></div><div class="skill"><b>특수능력</b><span class="skill-icons"><img class="skill-icon" src="images/icon/after_booster_icon.png" alt=""><img class="skill-icon" src="images/icon/Stealth.png" alt=""></span></div></div>
+      <div class="unit-info"><div class="stats"><div class="stat"><b>기본체력</b><span>2350</span></div><div class="stat"><b>기본방어력</b><span>6</span></div><div class="stat"><b>이동속도</b><span>6.0 m/s</span></div></div><div class="skill"><b>특수능력</b><span class="skill-icons"><a class="skill-link" href="skills_info.html#booster" title="부스터 설명 보기"><img class="skill-icon" src="images/icon/after_booster_icon.png" alt="부스터"></a><a class="skill-link" href="skills_info.html#stealth" title="스텔스 설명 보기"><img class="skill-icon" src="images/icon/Stealth.png" alt="스텔스"></a></span></div></div>
     </article>
   </div>
 </main>
