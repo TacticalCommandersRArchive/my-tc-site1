@@ -76,6 +76,11 @@ body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(
       <h2 class="skill-name">수류탄/EMP수류탄</h2>
       <div class="skill-desc">수류탄을 던져 피해를 입힙니다 EMP수류탄은 적의 에너지를 제거 할수 있습니다</div>
     </article>
+    <article class="skill-row" id="virus">
+      <div class="skill-icon-box"><img src="images/icon/grenade_icon.png" alt=""></div>
+      <h2 class="skill-name">바이러스</h2>
+      <div class="skill-desc">수류탄을 던져 적 하나를 감염시켜 죽을 때까지 일정량의 체력을 계속 소모시킨다</div>
+    </article>
     <article class="skill-row" id="emp-attack">
       <div class="skill-icon-box"><img src="images/icon/emp_attack_icon.png" alt=""></div>
       <h2 class="skill-name">EMP 공격</h2>
@@ -96,7 +101,7 @@ body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(
       <h2 class="skill-name">부스터</h2>
       <div class="skill-desc">유닛의 이동속도를 비약적으로 상승 시킵니다</div>
     </article>
-    <article class="skill-row">
+    <article class="skill-row" id="psychosis">
       <div class="skill-icon-box"><img src="images/icon/싸이코.png" alt=""></div>
       <h2 class="skill-name">사이코시스</h2>
       <div class="skill-desc">일정 시간 유닛을 제어 불능으로 만들고 공격 하게 만듭니다</div>
@@ -131,17 +136,17 @@ body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(
       <h2 class="skill-name">스텔스</h2>
       <div class="skill-desc">레이더에 걸리지 않고 적의 사정거리를 줄입니다</div>
     </article>
-    <article class="skill-row">
+    <article class="skill-row" id="self-destruction">
       <div class="skill-icon-box"><img src="images/icon/Self-destruction.png" alt=""></div>
       <h2 class="skill-name">자폭</h2>
       <div class="skill-desc">자폭 하여 주의에 큰 피해를 입힙니다</div>
     </article>
-    <article class="skill-row">
+    <article class="skill-row" id="dynamite">
       <div class="skill-icon-box"><img src="images/icon/Dynamite.png" alt=""></div>
       <h2 class="skill-name">다이너 마이트</h2>
       <div class="skill-desc">일정 구역에 설치해 원할때 폭파 시킬수 있습니다</div>
     </article>
-    <article class="skill-row">
+    <article class="skill-row" id="portal">
       <div class="skill-icon-box"><img src="images/icon/Gate.png" alt=""></div>
       <h2 class="skill-name">포탈</h2>
       <div class="skill-desc">연결된 곳으로 이동 합니다</div>
@@ -151,17 +156,17 @@ body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(
       <h2 class="skill-name">퀀텀 파이어</h2>
       <div class="skill-desc">강력한 에너지빔을 발사해 경로에 있는 적에게 피해를 줍니다</div>
     </article>
-    <article class="skill-row">
+    <article class="skill-row" id="jamming">
       <div class="skill-icon-box"><img src="images/icon/jamming.png" alt=""></div>
       <h2 class="skill-name">재밍</h2>
       <div class="skill-desc">적의 미니맵에 장애를 주고 시야를 차단합니다</div>
     </article>
-    <article class="skill-row">
+    <article class="skill-row" id="shield">
       <div class="skill-icon-box"><img src="images/icon/Shield.png" alt=""></div>
       <h2 class="skill-name">보호막</h2>
       <div class="skill-desc">외부 공격을 차단합니다</div>
     </article>
-    <article class="skill-row">
+    <article class="skill-row" id="chemical-mine">
       <div class="skill-icon-box"><img src="images/icon/Mine.png" alt=""></div>
       <h2 class="skill-name">화학 지뢰</h2>
       <div class="skill-desc">느려지는 지뢰를 매설합니다</div>
@@ -176,30 +181,40 @@ body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(
       <h2 class="skill-name demo-trigger" data-demo="video/융단.gif" data-demo-title="융단 폭격">융단 폭격</h2>
       <div class="skill-desc">지나가는 경로에 폭격을 가합니다</div>
     </article>
-    <article class="skill-row">
+    <article class="skill-row" id="mine-removal">
       <div class="skill-icon-box"><img src="images/icon/Mine2.png" alt=""></div>
       <h2 class="skill-name">지뢰 제거</h2>
       <div class="skill-desc">주변에 있는 지뢰를 제거 합니다</div>
     </article>
-    <article class="skill-row">
+    <article class="skill-row" id="mine-install">
+      <div class="skill-icon-box"><img src="images/icon/Sit.png" alt=""></div>
+      <h2 class="skill-name">지뢰 설치</h2>
+      <div class="skill-desc">지뢰를 설치합니다</div>
+    </article>
+    <article class="skill-row" id="bunker-mode">
       <div class="skill-icon-box"><img src="images/icon/Bunker.png" alt=""></div>
       <h2 class="skill-name">벙커 모드</h2>
       <div class="skill-desc">벙커로 변신해 유닛이 들어가 사격할수 있게 합니다</div>
     </article>
-    <article class="skill-row">
+    <article class="skill-row" id="detector">
       <div class="skill-icon-box"><img src="images/icon/Detector.png" alt=""></div>
       <h2 class="skill-name">디텍터</h2>
       <div class="skill-desc">은신 유닛을 탐지 합니다</div>
     </article>
-    <article class="skill-row">
+    <article class="skill-row" id="scan">
       <div class="skill-icon-box"><img src="images/icon/Rader.png" alt=""></div>
       <h2 class="skill-name">스캔</h2>
       <div class="skill-desc">미니맵에 적 유닛을 표시합니다</div>
     </article>
-    <article class="skill-row has-demo">
+    <article class="skill-row has-demo" id="teleportation">
       <div class="skill-icon-box demo-trigger" data-demo="video/텔레포트.gif" data-demo-title="텔레포트"><img src="images/icon/Teleportation.png" alt=""></div>
       <h2 class="skill-name demo-trigger" data-demo="video/텔레포트.gif" data-demo-title="텔레포트">텔레포트</h2>
       <div class="skill-desc">유닛을 텔레포트 시킵니다</div>
+    </article>
+    <article class="skill-row" id="drop">
+      <div class="skill-icon-box"><img src="images/icon/Drop.png" alt=""></div>
+      <h2 class="skill-name">드랍</h2>
+      <div class="skill-desc">유닛1기를 탑승시켜 옮길수 있습니다</div>
     </article>
   </div>
 </main>
