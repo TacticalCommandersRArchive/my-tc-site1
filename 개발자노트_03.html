@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>두번째 개발자 노트+@</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(0,170,255,.14),transparent 26rem),radial-gradient(circle at 88% 12%,rgba(30,191,255,.10),transparent 26rem),linear-gradient(135deg,rgba(255,255,255,.018) 25%,transparent 25%) 0 0/18px 18px,#070b12;color:#dff8ff;font-family:Bahnschrift,"Malgun Gothic",Arial,sans-serif;font-weight:700;padding:20px 0 42px}
+.shell{width:min(980px,calc(100vw - 32px));margin:0 auto}
+.home-banner{display:block;width:100%;max-width:1200px;margin:0 auto 28px;border-radius:10px;box-shadow:0 0 28px rgba(0,150,255,.28)}
+.note{border:1px solid rgba(139,232,255,.38);border-radius:8px;background:linear-gradient(180deg,rgba(9,17,26,.96),rgba(3,7,12,.98));box-shadow:0 14px 30px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.05);padding:24px 28px}
+.note-head{display:grid;gap:8px;margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid rgba(139,232,255,.22)}
+h1{margin:0;color:#fff;font-size:26px;font-weight:900;line-height:1.25;text-shadow:0 1px 2px #000,0 0 10px rgba(0,165,220,.5)}
+.meta{display:flex;gap:14px;flex-wrap:wrap;color:#8fb8c8;font-size:14px}
+.content{color:#edfaff;font-size:17px;line-height:1.85;text-align:left;text-shadow:0 1px 2px #000}
+.content p{margin:0 0 16px}
+.video-box{margin:22px 0;border:1px solid rgba(139,232,255,.34);border-radius:8px;overflow:hidden;background:#020509;box-shadow:0 16px 34px rgba(0,0,0,.5)}
+.video-box iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
+</style>
+</head>
+<body>
+<main class="shell">
+  <a href="index.html" title="메인 화면으로 돌아가기">
+    <img class="home-banner" src="images/channels_banner_title.jpg" alt="Tactical Commanders R Community Archive">
+  </a>
+
+  <article class="note">
+    <header class="note-head">
+      <h1>두번째 개발자 노트+@</h1>
+      <div class="meta">
+        <span>작성자: 택티컬 커맨더스 R</span>
+        <span>게시일: 2026.06.14 15:58</span>
+      </div>
+    </header>
+
+    <div class="content">
+      <p>두 번째 개발자 노트 + @ 입니다.</p>
+      <p>많은 분들이 티저 영상을 봐주셨네요.</p>
+      <p>그래서 추가 영상을 하나 더 공개하도록 하겠습니다.</p>
+      <p>프로토 타입 기술 테스트 영상입니다.</p>
+      <p>5월 티저 영상 만들 때 같이 만든 영상으로 간단한 공중전 전투 테스트 영상입니다.</p>
+      <p>새로운 엔진에서 기술적인 판단하기 위한 테스트 영상으로 실제 게임과 많이 다를 수 있습니다.</p>
+      <div class="video-box">
+        <iframe id="prototype-video" title="택티컬 커맨더스 R 프로토 타입 기술 테스트 영상" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+  </article>
+</main>
+<script>
+const prototypeVideo = document.getElementById("prototype-video");
+if (prototypeVideo) {
+  const origin = encodeURIComponent(window.location.origin);
+  prototypeVideo.src = `https://www.youtube.com/embed/pS0VTpgXVw8?rel=0&playsinline=1&origin=${origin}`;
+}
+</script>
+</body>
+</html>
