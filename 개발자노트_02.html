@@ -17,10 +17,6 @@ h1{margin:0;color:#fff;font-size:26px;font-weight:900;line-height:1.25;text-shad
 .content p{margin:0 0 16px}
 .video-box{margin:22px 0;border:1px solid rgba(139,232,255,.34);border-radius:8px;overflow:hidden;background:#020509;box-shadow:0 16px 34px rgba(0,0,0,.5)}
 .video-box iframe{display:block;width:100%;aspect-ratio:16/9;border:0}
-.video-link{display:inline-block;margin:4px 0 16px;color:#9fdfff;text-decoration:none}
-.video-link:hover{color:#fff;text-decoration:underline}
-.back-link{display:inline-block;margin-top:18px;color:#9fdfff;text-decoration:none;font-size:14px}
-.back-link:hover{color:#fff}
 </style>
 </head>
 <body>
@@ -54,13 +50,17 @@ h1{margin:0;color:#fff;font-size:26px;font-weight:900;line-height:1.25;text-shad
       <p>오늘은 간단하게 게임 관련 아주 짧은 영상을 하나 공개하려고 합니다.</p>
       <p>해당 영상은 5월경 제작해둔 짧은 티저 영상입니다.</p>
       <div class="video-box">
-        <iframe src="https://www.youtube.com/embed/Q74QlWMClQ8" title="택티컬 커맨더스 R 티저 영상" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe id="teaser-video" title="택티컬 커맨더스 R 티저 영상" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="origin-when-cross-origin" allowfullscreen></iframe>
       </div>
-      <a class="video-link" href="https://youtu.be/Q74QlWMClQ8">유튜브에서 보기</a>
     </div>
-
-    <a class="back-link" href="index.html">메인으로 돌아가기</a>
   </article>
 </main>
+<script>
+const teaserVideo = document.getElementById("teaser-video");
+if (teaserVideo) {
+  const origin = encodeURIComponent(window.location.origin);
+  teaserVideo.src = `https://www.youtube.com/embed/Q74QlWMClQ8?rel=0&playsinline=1&origin=${origin}`;
+}
+</script>
 </body>
 </html>
