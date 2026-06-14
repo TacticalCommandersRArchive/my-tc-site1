@@ -58,6 +58,37 @@ body{background:#070b12;color:#dff8ff;font-family:Bahnschrift,"Malgun Gothic",Ar
 }
 .dropdown-menu a:hover,
 .dropdown-menu a:focus{background:rgba(30,191,255,.16);color:#fff;outline:none;}
+.note-panel{width:min(980px,calc(100vw - 32px));margin:46px auto 0;padding:16px 16px 18px;border:1px solid rgba(139,232,255,.36);border-radius:8px;background:linear-gradient(180deg,rgba(9,17,26,.96),rgba(3,7,12,.98));box-shadow:0 14px 30px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.05);text-align:left;}
+.note-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:12px;}
+.note-title{margin:0;color:#f4fbff;font-size:20px;font-weight:800;text-shadow:0 1px 2px #000,0 0 9px rgba(0,165,220,.5);}
+.note-more{color:#9fdfff;font-size:13px;text-decoration:none;text-shadow:0 1px 2px #000;}
+.note-more:hover{color:#fff;}
+.note-table{width:100%;border-collapse:collapse;table-layout:fixed;color:#e7fbff;font-size:15px;}
+.note-table th:first-child,.note-table td:first-child{width:68%;}
+.note-table th:nth-child(2),.note-table td:nth-child(2){width:12%;}
+.note-table th:nth-child(3),.note-table td:nth-child(3){width:20%;}
+.note-table th{padding:8px 10px;border-bottom:1px solid rgba(139,232,255,.28);color:#bfefff;font-weight:800;text-align:center;}
+.note-table th:first-child{text-align:left;}
+.note-table td{padding:9px 10px;border-bottom:1px solid rgba(139,232,255,.14);background:rgba(255,255,255,.035);}
+.note-table tr:nth-child(even) td{background:rgba(255,255,255,.018);}
+.note-table td:first-child{color:#fff;text-align:left;}
+.note-table td:nth-child(2),.note-table td:nth-child(3){text-align:center;white-space:nowrap;}
+.note-link{color:#fff;text-decoration:none;}
+.note-link:hover{color:#bfefff;text-decoration:underline;}
+.video-panel{width:min(980px,calc(100vw - 32px));margin:40px auto 0;text-align:left;}
+.video-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:12px;}
+.video-title{margin:0;color:#f4fbff;font-size:20px;font-weight:800;text-shadow:0 1px 2px #000,0 0 9px rgba(0,165,220,.48);}
+.video-more{color:#9fdfff;font-size:13px;text-decoration:none;text-shadow:0 1px 2px #000;}
+.video-more:hover{color:#fff;}
+.video-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;}
+.video-card{display:block;min-width:0;text-decoration:none;color:#e7fbff;}
+.video-thumb{position:relative;aspect-ratio:16/9;border:1px solid rgba(30,191,255,.45);border-radius:8px;overflow:hidden;background:radial-gradient(circle at 22% 24%,rgba(90,205,255,.2),transparent 34%),linear-gradient(135deg,#111c28,#03070d 68%);box-shadow:0 12px 26px rgba(0,0,0,.42),0 0 18px rgba(0,170,255,.16);}
+.video-thumb::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.07) 25%,transparent 25%) 0 0/18px 18px;opacity:.35;}
+.video-thumb::after{content:"▶";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:52px;height:52px;border:1px solid rgba(190,240,255,.65);border-radius:50%;background:rgba(0,0,0,.56);color:#dff8ff;font-size:20px;text-indent:3px;box-shadow:0 0 18px rgba(0,170,255,.35);}
+.video-label{position:absolute;left:12px;bottom:10px;right:12px;color:#dff8ff;font-size:13px;font-weight:700;text-shadow:0 1px 2px #000,0 0 8px rgba(0,165,220,.55);}
+.video-card-title{margin:9px 2px 2px;color:#fff;font-size:15px;font-weight:800;line-height:1.35;text-shadow:0 1px 2px #000;}
+.video-meta{margin:0 2px;color:#8fb8c8;font-size:12px;font-weight:600;}
+@media(max-width:780px){.menu-buttons{justify-content:center;padding-left:0}.note-table{font-size:13px}.note-table th:nth-child(2),.note-table td:nth-child(2){display:none}.video-grid{grid-template-columns:1fr}.video-panel{margin-top:36px}}
 </style>
 </head>
 <body>
@@ -100,6 +131,56 @@ body{background:#070b12;color:#dff8ff;font-family:Bahnschrift,"Malgun Gothic",Ar
     </div>
   </div>
 </div>
+<section class="note-panel" aria-label="최신 개발자 노트">
+  <div class="note-head">
+    <h2 class="note-title">택티컬 커맨더스 R 최신 개발자 노트</h2>
+    <a class="note-more" href="https://gall.dcinside.com/mgallery/board/lists/?id=tacticalcommandersr">더보기</a>
+  </div>
+  <table class="note-table">
+    <thead>
+      <tr>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>게시일</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="note-link" href="개발자노트_02.html">두번째 개발자 노트</a></td>
+        <td>택티컬 커맨더스 R</td>
+        <td>2026.06.12 19:22</td>
+      </tr>
+      <tr>
+        <td><a class="note-link" href="개발자노트_01.html">첫번째 개발자 노트</a></td>
+        <td>택티컬 커맨더스 R</td>
+        <td>2026.05.26 23:35</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+<section class="video-panel" aria-label="유튜브 영상 예시">
+  <div class="video-head">
+    <h2 class="video-title">택티컬 커맨더스 R 관련 유튜브 영상</h2>
+    <a class="video-more" href="https://www.youtube.com/@Tactical_Commanders_R">더보기</a>
+  </div>
+  <div class="video-grid">
+    <a class="video-card" href="https://www.youtube.com/@Tactical_Commanders_R">
+      <div class="video-thumb"><span class="video-label">OFFICIAL CHANNEL</span></div>
+      <p class="video-card-title">공식 채널 영상 자리</p>
+      <p class="video-meta">Tactical Commanders R · 예시</p>
+    </a>
+    <a class="video-card" href="https://www.youtube.com/@Tactical_Commanders_R">
+      <div class="video-thumb"><span class="video-label">UNIT PLAY</span></div>
+      <p class="video-card-title">유닛 플레이 / 전투 영상 자리</p>
+      <p class="video-meta">YouTube · 예시</p>
+    </a>
+    <a class="video-card" href="https://www.youtube.com/@Tactical_Commanders_R">
+      <div class="video-thumb"><span class="video-label">GUIDE</span></div>
+      <p class="video-card-title">가이드 / 업데이트 영상 자리</p>
+      <p class="video-meta">Archive · 예시</p>
+    </a>
+  </div>
+</section>
 <script>
 document.querySelectorAll(".dropdown button").forEach((button) => {
   button.addEventListener("click", (event) => {
