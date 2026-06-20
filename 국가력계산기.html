@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>국가력 계산기</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(0, 170, 255, .14), transparent 26rem),
+        radial-gradient(circle at 88% 12%, rgba(30, 191, 255, .10), transparent 24rem),
+        linear-gradient(135deg, rgba(255,255,255,.018) 25%, transparent 25%) 0 0 / 18px 18px,
+        #070b12;
+      color: #efe7c7;
+      font-family: Bahnschrift, "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif;
+    }
+    main {
+      width: min(820px, calc(100vw - 24px));
+      margin: 0 auto;
+      padding: 18px 0 28px;
+    }
+    .home-banner {
+      display: block;
+      width: min(100vw - 24px, 1200px);
+      max-width: none;
+      margin: 0 auto 16px;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 8px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, .45);
+    }
+    .panel {
+      position: relative;
+      border: 1px solid rgba(178, 166, 105, .34);
+      background: #171911;
+      padding: 14px;
+    }
+    .title-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    h1 {
+      margin: 0;
+      color: #d6b34c;
+      font-size: 22px;
+      letter-spacing: 0;
+    }
+    .author {
+      color: #ffe66a;
+      font-size: 13px;
+      font-weight: 900;
+      white-space: nowrap;
+      margin-left: auto;
+    }
+    .author-corner {
+      position: absolute;
+      right: 6px;
+      bottom: 4px;
+    }
+    .time-row {
+      display: grid;
+      grid-template-columns: 96px 1fr auto;
+      gap: 8px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    label,
+    .row-label {
+      color: #d6b34c;
+      font-weight: 800;
+      text-align: center;
+    }
+    input {
+      width: 100%;
+      height: 34px;
+      border: 1px solid rgba(255,255,255,.32);
+      background: #11130c;
+      color: #efe7c7;
+      padding: 4px 8px;
+      font: inherit;
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    input[type="datetime-local"] {
+      text-align: left;
+      border-color: rgba(214, 179, 76, .45);
+      color-scheme: light;
+    }
+    input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+      background-color: #dff8ff;
+      border: 1px solid rgba(139, 232, 255, .85);
+      border-radius: 3px;
+      cursor: pointer;
+      filter: invert(0) brightness(1.25) contrast(1.2);
+      opacity: 1;
+      padding: 2px;
+    }
+    button {
+      min-height: 34px;
+      border: 1px solid #62613d;
+      background: linear-gradient(#35351f, #17190f);
+      color: #efe7c7;
+      padding: 0 12px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+    td {
+      border: 1px solid rgba(178,166,105,.25);
+      padding: 8px;
+      text-align: center;
+      vertical-align: middle;
+      background: #1d1f16;
+    }
+    td:first-child {
+      width: 116px;
+      background: #202216;
+    }
+    .notice {
+      color: #fff4c0;
+      background: #35351f;
+      font-weight: 900;
+    }
+    .output {
+      font-weight: 900;
+      font-variant-numeric: tabular-nums;
+    }
+    .c-yellow { --accent: #f0c400; --fill: rgba(240, 196, 0, .32); --text: #ffe66a; }
+    .c-red { --accent: #f04438; --fill: rgba(240, 68, 56, .30); --text: #ff9b92; }
+    .c-mint { --accent: #66eee8; --fill: rgba(102, 238, 232, .34); --text: #bffffc; }
+    .c-blue { --accent: #2878ff; --fill: rgba(40, 120, 255, .32); --text: #9fc3ff; }
+    td.c-yellow,
+    td.c-red,
+    td.c-mint,
+    td.c-blue {
+      background: var(--fill);
+      border: 1px solid var(--accent);
+      outline: 1px solid var(--accent);
+      outline-offset: -1px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.16);
+    }
+    td.c-yellow input,
+    td.c-red input,
+    td.c-mint input,
+    td.c-blue input {
+      border-color: var(--accent);
+      background: rgba(0, 0, 0, .28);
+      color: var(--text);
+      outline: 1px solid var(--accent);
+      outline-offset: -2px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.16);
+    }
+    td.output.c-yellow,
+    td.output.c-red,
+    td.output.c-mint,
+    td.output.c-blue {
+      color: var(--text);
+      outline: 1px solid var(--accent);
+      outline-offset: -1px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.16);
+    }
+    .muted {
+      color: #bdb38d;
+      font-size: 13px;
+      margin-top: 10px;
+      line-height: 1.5;
+    }
+    @media (max-width: 680px) {
+      main { width: calc(100vw - 12px); padding-top: 8px; }
+      .panel { padding: 8px; }
+      .title-row { align-items: flex-start; flex-direction: column; gap: 2px; }
+      .time-row { grid-template-columns: 1fr; }
+      table { min-width: 680px; }
+      .table-wrap { overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <a href="index.html" title="메인 화면으로 돌아가기">
+      <img class="home-banner" src="images/channels_banner_title.jpg" alt="Tactical Commanders R Community Archive">
+    </a>
+
+    <section class="panel">
+      <div class="time-row">
+        <label for="currentTime">현재 시각</label>
+        <input id="currentTime" type="datetime-local" step="60">
+        <button type="button" id="nowButton">현재시간</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <tbody>
+            <tr>
+              <td class="row-label">현재 국가력</td>
+              <td class="c-yellow"><input class="power" value="0" inputmode="numeric"></td>
+              <td class="c-red"><input class="power" value="0" inputmode="numeric"></td>
+              <td class="c-mint"><input class="power" value="0" inputmode="numeric"></td>
+              <td class="c-blue"><input class="power" value="0" inputmode="numeric"></td>
+            </tr>
+            <tr>
+              <td class="row-label">영토수</td>
+              <td class="c-yellow"><input class="land" value="1" inputmode="numeric"></td>
+              <td class="c-red"><input class="land" value="1" inputmode="numeric"></td>
+              <td class="c-mint"><input class="land" value="1" inputmode="numeric"></td>
+              <td class="c-blue"><input class="land" value="1" inputmode="numeric"></td>
+            </tr>
+            <tr>
+              <td class="notice" colspan="5">국가력 30000 까지의 예상 시간</td>
+            </tr>
+            <tr>
+              <td class="row-label">남은 시간</td>
+              <td class="output c-yellow remain">0</td>
+              <td class="output c-red remain">0</td>
+              <td class="output c-mint remain">0</td>
+              <td class="output c-blue remain">0</td>
+            </tr>
+            <tr>
+              <td class="row-label">예상 날짜</td>
+              <td class="output c-yellow date">0</td>
+              <td class="output c-red date">0</td>
+              <td class="output c-mint date">0</td>
+              <td class="output c-blue date">0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="muted">계산 기준: 10분마다 영토수만큼 국가력이 증가합니다.</div>
+      <div class="author author-corner">원본-전설의낭군</div>
+    </section>
+  </main>
+
+  <script>
+    const TARGET_POWER = 30000;
+    const SECONDS_PER_TICK = 600;
+    const DECAY_RATE = 0.7;
+    const timeInput = document.getElementById("currentTime");
+    const powers = Array.from(document.querySelectorAll(".power"));
+    const lands = Array.from(document.querySelectorAll(".land"));
+    const remains = Array.from(document.querySelectorAll(".remain"));
+    const dates = Array.from(document.querySelectorAll(".date"));
+    let targetDates = [];
+
+    function pad(value) {
+      return String(value).padStart(2, "0");
+    }
+
+    function toLocalInputValue(date) {
+      return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
+    }
+
+    function formatDate(date) {
+      return `${pad(date.getFullYear() % 100)}-${pad(date.getMonth() + 1)}-${pad(date.getDate())} ${pad(date.getHours())}:${pad(date.getMinutes())}`;
+    }
+
+    function formatDurationSeconds(totalSeconds) {
+      const totalMinutes = Math.max(0, Math.ceil(totalSeconds / 60));
+      const days = Math.floor(totalMinutes / 1440);
+      const rest = totalMinutes % 1440;
+      const hours = Math.floor(rest / 60);
+      const mins = rest % 60;
+      return `${days}일${pad(hours)}:${pad(mins)}`;
+    }
+
+    function numberFrom(input) {
+      const value = Number(String(input.value).replaceAll(",", "").trim());
+      return Number.isFinite(value) ? value : 0;
+    }
+
+    function deltaTicksToTarget(power, land) {
+      const rawSeconds = ((TARGET_POWER - power) * -SECONDS_PER_TICK) / land;
+      return Math.trunc((SECONDS_PER_TICK - 1 - Math.trunc(rawSeconds)) / SECONDS_PER_TICK);
+    }
+
+    function calculateTargetSeconds() {
+      const currentPowers = powers.map((input) => {
+        return Math.max(0, Math.floor(numberFrom(input)));
+      });
+      const landValues = lands.map((input) => Math.max(0, Math.floor(numberFrom(input))));
+      const workPowers = currentPowers.slice();
+      const elapsedTicks = [0, 0, 0, 0];
+      const resultTicks = [0, 0, 0, 0];
+      const finished = [false, false, false, false];
+
+      if (landValues.some((land) => land <= 0)) {
+        return null;
+      }
+
+      for (let step = 0; step < powers.length; step += 1) {
+        let maxIndex = -1;
+        for (let index = 0; index < workPowers.length; index += 1) {
+          if (finished[index]) continue;
+          if (maxIndex === -1 || workPowers[index] > workPowers[maxIndex]) {
+            maxIndex = index;
+          }
+        }
+
+        const ticks = deltaTicksToTarget(workPowers[maxIndex], landValues[maxIndex]);
+
+        for (let index = 0; index < elapsedTicks.length; index += 1) {
+          if (!finished[index]) {
+            elapsedTicks[index] += ticks;
+          }
+        }
+
+        resultTicks[maxIndex] = elapsedTicks[maxIndex];
+        finished[maxIndex] = true;
+
+        for (let index = 0; index < workPowers.length; index += 1) {
+          if (!finished[index]) {
+            workPowers[index] = DECAY_RATE * (workPowers[index] + ticks * landValues[index]);
+          }
+        }
+      }
+
+      return resultTicks.map((ticks) => ticks * SECONDS_PER_TICK);
+    }
+
+    function renderResults(now) {
+      if (!targetDates.length) return;
+
+      targetDates.forEach((targetDate, index) => {
+        const remainingSeconds = Math.ceil((targetDate.getTime() - now.getTime()) / 1000);
+        remains[index].textContent = formatDurationSeconds(remainingSeconds);
+        dates[index].textContent = formatDate(targetDate);
+      });
+    }
+
+    function calculate(baseDate = (timeInput.value ? new Date(timeInput.value) : new Date())) {
+      const targetSeconds = calculateTargetSeconds();
+
+      if (!targetSeconds) {
+        targetDates = [];
+        remains.forEach((remain) => {
+          remain.textContent = "계산불가";
+        });
+        dates.forEach((date) => {
+          date.textContent = "-";
+        });
+        return;
+      }
+
+      targetDates = targetSeconds.map((seconds) => {
+        return new Date(baseDate.getTime() + seconds * 1000);
+      });
+      renderResults(baseDate);
+    }
+
+    function setNow() {
+      const now = new Date();
+      timeInput.value = toLocalInputValue(now);
+      calculate(now);
+    }
+
+    document.getElementById("nowButton").addEventListener("click", setNow);
+    timeInput.addEventListener("input", () => {
+      calculate();
+    });
+    powers.forEach((input, index) => {
+      input.addEventListener("input", () => {
+        calculate();
+      });
+    });
+    lands.forEach((input, index) => {
+      input.addEventListener("input", () => {
+        calculate();
+      });
+    });
+
+    setNow();
+  </script>
+</body>
+</html>
