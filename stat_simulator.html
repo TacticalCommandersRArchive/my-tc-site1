@@ -20,13 +20,13 @@ body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(
 .label{color:#f0f6f7;letter-spacing:2px}
 .value{min-height:26px;color:#dff8ff;text-align:left}
 .level-input{width:62px;height:31px;border:1px solid rgba(139,232,255,.45);background:#050b14;color:#e7fbff;text-align:center;font:inherit;font-weight:800}
-.stat-head{display:grid;grid-template-columns:92px 1fr;gap:8px;align-items:center;margin-bottom:12px}
+.stat-head{display:grid;grid-template-columns:76px 86px;gap:8px;align-items:center;justify-content:center;margin-bottom:12px}
 .stat-head label{font-weight:800;letter-spacing:3px;text-align:center}
-.points{height:30px;border:1px solid rgba(139,232,255,.5);background:#050b14;color:#dff8ff;text-align:center;font:inherit;font-weight:800}
+.points{width:86px;height:30px;border:1px solid rgba(139,232,255,.5);background:#050b14;color:#dff8ff;text-align:center;font:inherit;font-weight:800}
 .stat-list{display:grid;gap:8px}
-.stat-row{display:grid;grid-template-columns:76px 1fr 26px 26px;gap:5px;align-items:center}
+.stat-row{display:grid;grid-template-columns:76px 86px 26px 26px;gap:5px;align-items:center;justify-content:center}
 .stat-name{height:30px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(139,232,255,.45);background:#060b0b;font-weight:800;letter-spacing:4px}
-.stat-value{height:30px;border:1px solid rgba(139,232,255,.35);background:#050b14;color:#e7fbff;text-align:center;font:inherit;font-weight:800}
+.stat-value{width:86px;height:30px;border:1px solid rgba(139,232,255,.35);background:#050b14;color:#e7fbff;text-align:center;font:inherit;font-weight:800}
 .stat-value[readonly]{opacity:.95;cursor:default}
 .step{height:31px;border:1px solid rgba(139,232,255,.45);background:#07111b;color:#dff8ff;cursor:pointer;font-weight:900}
 .step:hover{border-color:#dff8ff;color:#fff}
@@ -62,7 +62,6 @@ body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(
         <div class="stat-row" data-stat="knowledge"><div class="stat-name">지 식</div><input class="stat-value" value="5" maxlength="3" inputmode="numeric" autocomplete="off"><button class="step plus" type="button">▲</button><button class="step minus" type="button">▼</button></div>
         <div class="stat-row" data-stat="tech"><div class="stat-name">기 술</div><input class="stat-value" value="5" maxlength="3" inputmode="numeric" autocomplete="off"><button class="step plus" type="button">▲</button><button class="step minus" type="button">▼</button></div>
       </div>
-      <div class="hint">포인트를 입력한 뒤 ▲▼로 분배하세요.</div>
     </section>
   </div>
 </main>
