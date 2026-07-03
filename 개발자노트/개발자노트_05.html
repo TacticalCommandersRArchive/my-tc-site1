@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>네번째 개발자 노트</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(0,170,255,.14),transparent 26rem),radial-gradient(circle at 88% 12%,rgba(30,191,255,.10),transparent 26rem),linear-gradient(135deg,rgba(255,255,255,.018) 25%,transparent 25%) 0 0/18px 18px,#070b12;color:#dff8ff;font-family:Bahnschrift,"Malgun Gothic",Arial,sans-serif;font-weight:700;padding:20px 0 42px}
+.shell{width:min(980px,calc(100vw - 32px));margin:0 auto}
+.home-banner{display:block;width:100%;max-width:1200px;margin:0 auto 28px;border-radius:10px;box-shadow:0 0 28px rgba(0,150,255,.28)}
+.note{border:1px solid rgba(139,232,255,.38);border-radius:8px;background:linear-gradient(180deg,rgba(9,17,26,.96),rgba(3,7,12,.98));box-shadow:0 14px 30px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.05);padding:24px 28px}
+.note-head{display:grid;gap:8px;margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid rgba(139,232,255,.22)}
+h1{margin:0;color:#fff;font-size:26px;font-weight:900;line-height:1.25;text-shadow:0 1px 2px #000,0 0 10px rgba(0,165,220,.5)}
+h2{margin:30px 0 12px;color:#fff;font-size:21px;font-weight:900;line-height:1.35;text-shadow:0 1px 2px #000,0 0 10px rgba(0,165,220,.45)}
+.meta{display:flex;gap:14px;flex-wrap:wrap;color:#8fb8c8;font-size:14px}
+.content{color:#edfaff;font-size:17px;line-height:1.85;text-align:left;text-shadow:0 1px 2px #000}
+.content p{margin:0 0 16px}
+</style>
+</head>
+<body>
+<main class="shell">
+  <a href="../index.html" title="메인 화면으로 돌아가기">
+    <img class="home-banner" src="../images/channels_banner_title.jpg" alt="Tactical Commanders R Community Archive">
+  </a>
+
+  <article class="note">
+    <header class="note-head">
+      <h1>네번째 개발자 노트</h1>
+      <div class="meta">
+        <span>작성자: 택티컬 커맨더스 R</span>
+        <span>게시일: 2026.06.26 20:45</span>
+      </div>
+    </header>
+
+    <div class="content">
+      <p>이번 개발자 노트에서는 현재 개발 진행 상황을 조금 안내드리고자 합니다.</p>
+
+      <h2>개발 현황</h2>
+      <p>현재 기존 택티컬 커맨더스의 핵심 기능은 상당 부분 구현된 상태입니다.</p>
+      <p>새로운 엔진 환경에서 게임 실행, 서버 통신, 전투 진행 등이 가능한 단계까지는 도달했습니다.</p>
+      <p>현재는 여기에 몇 가지 신규 요소를 추가하고, 과거 버전에서 존재했던 버그나 불편한 부분을 수정하는 작업을 함께 진행하고 있습니다.</p>
+      <p>다만 아직 당장 오픈할 수 있는 수준은 아닙니다.</p>
+      <p>지금은 “게임이 실행되고, 서버와 통신하며, 기본적인 전투 흐름이 동작하는 단계” 정도로 이해해주시면 될 것 같습니다.</p>
+      <p>앞으로는 이 상태를 기반으로 안정화, 기능 보강, 테스트를 계속 진행할 예정입니다.</p>
+
+      <h2>맵 에디터</h2>
+      <p>내부적으로는 맵 에디터도 함께 제작하고 있습니다.</p>
+      <p>아직은 맵 타일 배치나 편집 과정이 생각보다 쉽지 않아 계속 개선이 필요한 상태입니다.</p>
+      <p>하지만 장기적으로는 유저분들이 직접 만든 맵을 공유하거나, 스팀 창작마당 같은 공간을 통해 다양한 맵을 활용할 수 있으면 좋겠다고 생각하고 있습니다.</p>
+      <p>물론 아직은 먼 이야기입니다.</p>
+      <p>우선은 내부 제작과 테스트에 사용할 수 있는 수준까지 완성하는 것을 목표로 하고 있습니다.</p>
+
+      <h2>디스코드 번역기</h2>
+      <p>최근 디스코드 번역기도 일부 변경되었습니다.</p>
+      <p>혹시 눈치채신 분이 계실지 모르겠습니다.</p>
+      <p>이전보다 번역 품질은 조금 향상되었을 것으로 보고 있습니다.</p>
+      <p>더 좋은 방식도 테스트해보았지만, 번역 시간이 너무 길어지는 문제가 있었습니다.</p>
+      <p>그래서 우선은 현재 버전으로 운영하면서 실제 사용 상황을 지켜보려고 합니다.</p>
+      <p>해외 유저분들과의 소통 가능성도 계속 확인해야 하는 만큼, 번역 기능은 앞으로도 조금씩 개선해 나갈 예정입니다.</p>
+      <p>(참고로 번역기는 12년 전에 생산된 노트북이 담당하고 있습니다 😩)</p>
+
+      <h2>출시 및 테스트 일정에 대해</h2>
+      <p>이 부분은 아직 확정된 일정이 아니라 희망 사항에 가깝습니다.</p>
+      <p>대한민국에서 게임을 출시하려면 여러 절차가 필요합니다.</p>
+      <p>그중 하나가 게임물 등급분류 및 등록 절차입니다.</p>
+      <p>해당 과정에서 큰 문제가 없다면, 희망적으로는 9~10월 중 소규모 비공개 테스트를 진행할 수 있었으면 합니다.</p>
+      <p>비공개 테스트는 많은 인원을 대상으로 하기보다는, 우선 소수 인원으로 안정성이나 기본 플레이 흐름을 확인하는 형태를 생각하고 있습니다.</p>
+      <p>게임 등록과 스팀 상점 준비가 완료된다면, 스팀을 통해 테스트나 향후 출시 절차를 진행하는 방향을 검토하고 있습니다.</p>
+      <p>다만 이 일정은 어디까지나 현재의 희망 사항이며, 개발 상황이나 외부 절차에 따라 언제든 변경될 수 있습니다.</p>
+
+      <h2>마무리</h2>
+      <p>아직 보여드릴 수 있는 완성된 결과물이 많지는 않지만, 내부적으로는 계속 기능 구현과 안정화 작업을 진행하고 있습니다.</p>
+      <p>오늘은 소소한 내용으로 마무리 할까 합니다.</p>
+    </div>
+  </article>
+</main>
+</body>
+</html>
