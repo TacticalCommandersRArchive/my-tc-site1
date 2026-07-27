@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>7월 네번째 개발자노트</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 8%,rgba(0,170,255,.14),transparent 26rem),radial-gradient(circle at 88% 12%,rgba(30,191,255,.10),transparent 26rem),linear-gradient(135deg,rgba(255,255,255,.018) 25%,transparent 25%) 0 0/18px 18px,#070b12;color:#dff8ff;font-family:Bahnschrift,"Malgun Gothic",Arial,sans-serif;font-weight:700;padding:20px 0 42px}
+.shell{width:min(980px,calc(100vw - 32px));margin:0 auto}
+.home-banner{display:block;width:100%;max-width:1200px;margin:0 auto 28px;border-radius:10px;box-shadow:0 0 28px rgba(0,150,255,.28)}
+.note{border:1px solid rgba(139,232,255,.38);border-radius:8px;background:linear-gradient(180deg,rgba(9,17,26,.96),rgba(3,7,12,.98));box-shadow:0 14px 30px rgba(0,0,0,.45),inset 0 0 0 1px rgba(255,255,255,.05);padding:24px 28px}
+.note-head{display:grid;gap:8px;margin-bottom:22px;padding-bottom:16px;border-bottom:1px solid rgba(139,232,255,.22)}
+h1{margin:0;color:#fff;font-size:26px;font-weight:900;line-height:1.25;text-shadow:0 1px 2px #000,0 0 10px rgba(0,165,220,.5)}
+h2{margin:30px 0 12px;color:#fff;font-size:21px;font-weight:900;line-height:1.35;text-shadow:0 1px 2px #000,0 0 10px rgba(0,165,220,.45)}
+h3{margin:22px 0 10px;color:#c8f6ff;font-size:18px;font-weight:900;line-height:1.35;text-shadow:0 1px 2px #000,0 0 8px rgba(0,165,220,.35)}
+.meta{display:flex;gap:14px;flex-wrap:wrap;color:#8fb8c8;font-size:14px}
+.content{color:#edfaff;font-size:17px;line-height:1.85;text-align:left;text-shadow:0 1px 2px #000}
+.content p{margin:0 0 16px}
+.content ul{margin:0 0 18px;padding-left:28px}
+.content li{margin:4px 0}
+</style>
+</head>
+<body>
+<main class="shell">
+  <a href="../index.html" title="메인 화면으로 돌아가기">
+    <img class="home-banner" src="../images/channels_banner_title.jpg" alt="Tactical Commanders R Community Archive">
+  </a>
+
+  <article class="note">
+    <header class="note-head">
+      <h1>7월 네번째 개발자노트</h1>
+      <div class="meta">
+        <span>작성자: 택티컬 커맨더스 R</span>
+        <span>게시일: 2026.07.24 21:59</span>
+      </div>
+    </header>
+
+    <div class="content">
+      <p>안녕하세요.</p>
+
+      <p>이번 주 개발자 노트입니다.</p>
+
+      <p>현재도 게임 심의 관련 절차를 계속 진행하고 있습니다.</p>
+      <p>예상보다 몇몇 공인 서류 발급이 지연되고 있어 심사 일정도 함께 늦어지고 있습니다.</p>
+      <p>저희 역시 게임 심의 절차를 처음 진행하다 보니 생각보다 준비해야 할 것이 많네요.</p>
+
+      <h2>개선 사항</h2>
+      <p>이번에는 확정되었거나 내부적으로 방향이 잡힌 개선 사항을 미리 소개해 드리겠습니다.</p>
+
+      <h3>비전투 시 충돌 기능 삭제</h3>
+      <p>비전투 상황에서는 플레이어 간 충돌 기능이 제거됩니다.</p>
+      <p>따라서 수도, 이동 중 다른 플레이어가 길을 막는 일은 발생하지 않을 예정입니다.</p>
+      <p>과거에는 이 기능을 악용하여 특정 통로를 막거나 이동을 방해하는 사례가 자주 발생했기 때문에, 불필요한 스트레스를 줄이기 위해 삭제하기로 결정했습니다.</p>
+
+      <h3>병과 레벨업 개선</h3>
+      <p>현재는 총 4개의 병과가 존재하며, 병과 레벨보다 낮은 유닛을 레벨업해도 병과 경험치를 획득할 수 없었습니다.</p>
+      <p>이 제한은 완화하거나 아예 삭제하는 방향을 검토하고 있습니다.</p>
+      <p>예를 들어 보병 병과 Lv.10인 상태에서도 Lv.5 보병 유닛을 레벨업하면 병과 경험치를 획득할 수 있도록 변경하는 방식입니다.</p>
+      <p>다만 이 부분은 내부 테스트를 거쳐 최종 결정할 예정입니다.</p>
+      <p>완전 폐지 또는 획득 범위 완화 등 여러 방향을 테스트하고 있으며, 확정되는 대로 다시 안내드리겠습니다.</p>
+
+      <h3>칭호 및 치장 요소</h3>
+      <p>현재 채팅창 폰트, 칭호 등 치장 요소를 기획하고 있습니다.</p>
+      <p>전투 능력과는 관계없는 꾸미기 요소이며, 어느 정도 개발이 진행되면 별도로 소개해 드리겠습니다.</p>
+      <p>이러한 치장 요소는 아래에서 설명드릴 시즌 포인트 상점을 통해 획득할 수 있도록 계획하고 있습니다.</p>
+
+      <h2>시즌제</h2>
+      <p>시즌제에 대한 방향이 어느 정도 정리되어 일부 내용을 공개합니다.</p>
+      <p>현재는 한 시즌을 약 3~4개월 정도로 운영하는 방향을 검토하고 있습니다.</p>
+      <p>시즌 종료 시에는 최종 순위에 따라 시즌 포인트가 지급되며, 개인 업적을 달성해도 포인트를 획득할 수 있도록 설계하고 있습니다.</p>
+      <p>또한 꾸준히 전투를 즐기고 유닛을 육성하는 플레이만으로도 기본적인 시즌 포인트는 획득할 수 있도록 부담 없는 수준으로 기획하고 있습니다.</p>
+      <p>시즌제의 가장 큰 목적은 전투에 참여할 동기를 만드는 것입니다.</p>
+      <p>과거에는 전투 자체의 목적성이 다소 부족했던 부분을 보완하기 위해 기획한 시스템이라고 생각해 주시면 됩니다.</p>
+
+      <h2>시즌 포인트 상점</h2>
+      <p>현재 검토 중인 시즌 상품은 다음과 같습니다.</p>
+      <ul>
+        <li>칭호</li>
+        <li>프로필 액자</li>
+        <li>채팅창 폰트</li>
+        <li>기타 치장 아이템</li>
+      </ul>
+
+      <p>또한 다음 시즌 한정 유닛 아이템 선행 해금도 고려하고 있습니다.</p>
+      <p>예를 들면 다음과 같습니다.</p>
+      <ul>
+        <li>1시즌 종료</li>
+        <li>익스큐터 신규 아이템 추가</li>
+        <li>시즌 포인트를 사용하면 2시즌 동안 먼저 사용 가능</li>
+        <li>3시즌부터는 모든 플레이어가 일반적으로 획득 가능</li>
+      </ul>
+
+      <p>즉, 시즌에 참여한 플레이어에게 먼저 체험할 수 있는 기회를 제공하는 형태를 생각하고 있습니다.</p>
+      <p>물론 이것 역시 현재 기획 단계이며, 실제 적용 방식은 변경될 수 있습니다.</p>
+      <p>글로만 설명드리다 보니 조금 이해하기 어려울 수도 있을 것 같습니다.</p>
+      <p>지금은 “시즌을 플레이하면 시즌 포인트를 얻고, 그 포인트로 다양한 보상을 구매할 수 있는 시스템이다.” 정도로 이해해 주시면 될 것 같습니다.</p>
+      <p>정식으로 공개될 때 직접 보시는 것이 훨씬 이해하기 쉬울 것이라 생각합니다.</p>
+
+      <p>이번 주 개발자 노트는 여기까지입니다.</p>
+      <p>감사합니다.</p>
+    </div>
+  </article>
+</main>
+</body>
+</html>
